@@ -4,18 +4,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0" prefWidth="389.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
-      <Button layoutX="117.0" layoutY="40.0" mnemonicParsing="false" text="Agregar nuevo registro" />
-      <Button layoutX="117.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="139.0" text="Editar regitro" />
-      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="117.0" layoutY="40.0" mnemonicParsing="false" text="Agregar nuevo registro">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="117.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="139.0" text="Editar regitro">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="agregarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../agregar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../editar.png" />
          </image>
