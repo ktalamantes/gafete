@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="400.0" prefWidth="606.0" style="-fx-background-color: brown;">
+         <children>
+            <TextField layoutX="328.0" layoutY="209.0" prefHeight="26.0" prefWidth="265.0" />
+            <TextField layoutX="329.0" layoutY="282.0" prefHeight="26.0" prefWidth="265.0" />
+            <Label layoutX="373.0" layoutY="154.0" text="Vehículo Autorizado" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="437.0" layoutY="254.0" text="Placas" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="393.0" layoutY="324.0" text="Modelo ó Marca" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="123.0" prefHeight="18.0" prefWidth="154.0" text="    Gastronomia" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1024px-Mexico_road_sign_estacionamiento.svg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@topBanner.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="75.0" layoutX="14.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Gamos.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
