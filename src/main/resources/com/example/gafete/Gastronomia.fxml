@@ -29,27 +29,27 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="123.0" prefHeight="18.0" prefWidth="154.0" text="    Gastronomia" textFill="WHITE">
+            <Label layoutX="43.0" layoutY="14.0" prefHeight="18.0" prefWidth="154.0" text="    Gastronomia" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@1024px-Mexico_road_sign_estacionamiento.svg.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@topBanner.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="57.0" fitWidth="75.0" layoutX="14.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Gamos.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="150.0" fitWidth="208.0" layoutX="396.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="24.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Gamos-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="53.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@png-clipart-parking-transport-business-unacor-corretora-de-seguros-business-text-trademark-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
