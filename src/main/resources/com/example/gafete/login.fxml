@@ -13,7 +13,7 @@
     <center>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="710.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="tec" fitHeight="51.0" fitWidth="724.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="tec" fitHeight="51.0" fitWidth="710.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../tec.png" />
                     </image>
