@@ -30,17 +30,17 @@
                         <Image url="@../../../lupa.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="752.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="752.0">
+                <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="762.0" layoutY="92.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="762.0">
                     <image>
                         <Image url="@../../../usuario1.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="76.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="776.4686866760254">
+                <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="103.0" layoutY="97.0" onMouseClicked="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="750.2686866760254">
                     <image>
                         <Image url="@../../../menu.png" />
                     </image>
                 </ImageView>
-            <TableView layoutX="146.0" layoutY="247.0" prefHeight="346.0" prefWidth="645.0">
+            <TableView layoutX="132.0" layoutY="228.0" prefHeight="346.0" prefWidth="645.0">
               <columns>
                 <TableColumn prefWidth="58.399932861328125" text="No. Registro" />
                 <TableColumn prefWidth="92.00007629394531" text="PROPIETARIO" />
@@ -54,6 +54,11 @@
             <ImageView fitHeight="184.0" fitWidth="910.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../tec.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="910.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../foot.jpeg" />
                </image>
             </ImageView>
             </children>

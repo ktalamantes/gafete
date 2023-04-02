@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="309.0" prefWidth="602.0" style="-fx-background-color: #D7E5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
       <Label layoutX="49.0" layoutY="75.0" text="Propietario:" />
@@ -22,7 +21,7 @@
       <TextField layoutX="111.0" layoutY="187.0" />
       <TextField layoutX="393.0" layoutY="139.0" />
       <Button layoutX="411.0" layoutY="253.0" mnemonicParsing="false" text="Guardar" />
-      <Button layoutX="499.0" layoutY="253.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="btnSalirA" layoutX="499.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnSalirAgregar" text="Cancelar" />
       <Pane opacity="0.33" prefHeight="40.0" prefWidth="604.0" style="-fx-background-color: #C0B7FA;">
          <children>
             <Label layoutX="220.0" layoutY="10.0" text="AGREGAR USUARIO">
