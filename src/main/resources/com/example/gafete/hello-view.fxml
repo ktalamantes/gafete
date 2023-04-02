@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0" prefWidth="389.0" style="-fx-background-color: #C7EBE3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="360.0" style="-fx-background-color: #D7E5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
-      <ImageView fx:id="agregarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="agregarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="70.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../agregar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="83.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../editar.png" />
          </image>
       </ImageView>
-      <Button layoutX="117.0" layoutY="40.0" mnemonicParsing="false" text="Agregar nuevo registro">
+      <Button layoutX="109.0" layoutY="37.0" mnemonicParsing="false" text="Agregar nuevo registro">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="117.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="139.0" text="Editar regitro">
+      <Button layoutX="108.0" layoutY="106.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" text="Editar regitro">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
