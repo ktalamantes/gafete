@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -61,6 +64,15 @@
                   <Image url="@../../../foot.jpeg" />
                </image>
             </ImageView>
+            <Button fx:id="Cerrar" layoutX="17.0" layoutY="576.0" mnemonicParsing="false" onAction="#CerrarSesión" text="Cerrar Sesión" />
+            <SplitMenuButton fx:id="siguiente" layoutX="720.0" layoutY="165.0" mnemonicParsing="false" text="Visualizar Gafete">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#admin" text="Administrativo" />
+                <MenuItem mnemonicParsing="false" onAction="#alumn" text="Alumno" />
+                  <MenuItem fx:id="Gastronomia" mnemonicParsing="false" onAction="#gastro" text="Gastronomia" />
+                  <MenuItem fx:id="Directivo" mnemonicParsing="false" onAction="#direct" text="Directivo" />
+              </items>
+            </SplitMenuButton>
             </children>
         </AnchorPane>
     </center>

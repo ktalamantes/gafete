@@ -1,14 +1,23 @@
 package com.example.gafete;
 
+
+import javafx.application.Platform;
+import javafx.css.converter.EffectConverter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class HelloController {
+
+
+
+
     @FXML
     private ImageView agregarImagen;
     @FXML
@@ -30,6 +39,19 @@ public class HelloController {
     private CheckBox box;
     @FXML
     private ImageView ojo;
+
+    @FXML
+    private Button Cerrar;
+    @FXML
+    private SplitMenuButton siguiente;
+    @FXML
+    private MenuItem  Administrativo;
+    @FXML
+    private MenuItem  Alumno;
+    private MenuItem  Gastronomia;
+    @FXML
+    private MenuItem  Directivo;
+
 
 
     //--------------------Validar contraseña e ingresar----------------------------------
@@ -140,4 +162,69 @@ public class HelloController {
         Stage s = (Stage) btnSalirE.getScene().getWindow();
         s.close();
     }
+    @FXML
+    protected void admin(){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Administrativo.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteAdministrativo
+
+
+    @FXML
+    protected void alumn (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Alumno.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteAlumno
+    @FXML
+    protected void gastro (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gastronomia.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteGastronomia
+    @FXML
+    protected void direct (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Directivo.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteDirectivo
+
+    @FXML
+    protected void CerrarSesión (ActionEvent event) {
+        Node n = (Node) event.getSource();
+        Stage s = (Stage) n.getScene().getWindow();
+        s.close();
+    }//CerrarSesión
 }

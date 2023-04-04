@@ -41,14 +41,14 @@
             <Image url="@images-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="24.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="121.0" fitWidth="96.0" layoutX="24.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Gamos-removebg-preview.png" />
+            <Image url="@Gamos.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="53.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@png-clipart-parking-transport-business-unacor-corretora-de-seguros-business-text-trademark-removebg-preview.png" />
+            <Image url="@E.png" />
          </image>
       </ImageView>
    </children>
