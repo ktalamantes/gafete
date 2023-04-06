@@ -13,6 +13,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+
 public class HelloController {
 
 
@@ -57,7 +59,8 @@ public class HelloController {
     //--------------------Validar contraseña e ingresar----------------------------------
     @FXML
     protected void btnValidar(){
-        if (usuario.getText().equals("Administrador") && contrasenia.getText().equals("12345")){
+
+        if (usuario.getText().equals("admin") && contrasenia.getText().equals("12345")){
             try {
                 Stage stage = new Stage();//Crear una nueva ventana
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("gafete.fxml"));
@@ -221,10 +224,4 @@ public class HelloController {
         }//catch
     }//gafeteDirectivo
 
-    @FXML
-    protected void CerrarSesión (ActionEvent event) {
-        Node n = (Node) event.getSource();
-        Stage s = (Stage) n.getScene().getWindow();
-        s.close();
-    }//CerrarSesión
 }
