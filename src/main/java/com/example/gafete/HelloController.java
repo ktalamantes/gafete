@@ -1,12 +1,20 @@
 package com.example.gafete;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+
+import javafx.application.Platform;
+import javafx.css.converter.EffectConverter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -18,7 +26,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.sql.Connection;
+
+
 public class HelloController {
+
+
+
+
     @FXML
     private ImageView agregarImagen;
     @FXML
@@ -56,11 +75,25 @@ public class HelloController {
     private TableColumn persona;
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
 
+    @FXML
+    private Button Cerrar;
+    @FXML
+    private SplitMenuButton siguiente;
+    @FXML
+    private MenuItem  Administrativo;
+    @FXML
+    private MenuItem  Alumno;
+    private MenuItem  Gastronomia;
+    @FXML
+    private MenuItem  Directivo;
+
+
 
     //--------------------Validar contraseña e ingresar----------------------------------
     @FXML
     protected void btnValidar(){
-        if (usuario.getText().equals("Administrador") && contrasenia.getText().equals("12345")){
+
+        if (usuario.getText().equals("admin") && contrasenia.getText().equals("12345")){
             try {
                 Stage stage = new Stage();//Crear una nueva ventana
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("gafete.fxml"));
@@ -198,5 +231,67 @@ public class HelloController {
         Stage s = (Stage) btnSalirE.getScene().getWindow();
         s.close();
     }
+
     //----------------FIN BOTONES SALIR-----------------------------------
+
+    @FXML
+    protected void admin(){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Administrativo.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteAdministrativo
+
+
+    @FXML
+    protected void alumn (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Alumno.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteAlumno
+    @FXML
+    protected void gastro (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gastronomia.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteGastronomia
+    @FXML
+    protected void direct (){
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Directivo.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("gafete");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }//catch
+    }//gafeteDirectivo
+
+
 }
