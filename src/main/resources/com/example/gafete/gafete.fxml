@@ -40,15 +40,15 @@
                         <Image url="@../../../menu.png" />
                     </image>
                 </ImageView>
-            <TableView layoutX="132.0" layoutY="222.0" prefHeight="346.0" prefWidth="645.0">
+            <TableView fx:id="tabla" layoutX="72.0" layoutY="186.0" prefHeight="418.0" prefWidth="766.0">
               <columns>
-                <TableColumn prefWidth="58.399932861328125" text="No. Registro" />
-                <TableColumn prefWidth="92.00007629394531" text="PROPIETARIO" />
-                  <TableColumn prefWidth="115.20001220703125" text="MARCA" />
-                  <TableColumn prefWidth="92.79998779296875" text="MODELO" />
-                  <TableColumn prefWidth="84.0" text="PLACAS" />
-                  <TableColumn prefWidth="129.5999755859375" text="PERSONA" />
-                  <TableColumn prefWidth="72.0" text="PDF" />
+                <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No. Registro" />
+                <TableColumn fx:id="propietario" prefWidth="201.59999084472656" text="PROPIETARIO" />
+                  <TableColumn fx:id="marca" prefWidth="90.4000244140625" text="MARCA" />
+                  <TableColumn fx:id="modelo" prefWidth="152.800048828125" text="MODELO" />
+                  <TableColumn fx:id="placas" prefWidth="101.5999755859375" text="PLACAS" />
+                  <TableColumn fx:id="persona" prefWidth="116.800048828125" text="PERSONA" />
+                  <TableColumn prefWidth="41.60001220703123" text="PDF" />
               </columns>
             </TableView>
             <ImageView fitHeight="184.0" fitWidth="910.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">

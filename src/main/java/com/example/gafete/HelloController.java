@@ -1,12 +1,22 @@
 package com.example.gafete;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class HelloController {
     @FXML
@@ -30,6 +40,21 @@ public class HelloController {
     private CheckBox box;
     @FXML
     private ImageView ojo;
+    @FXML
+    private TableView tabla;
+    @FXML
+    private TableColumn id;
+    @FXML
+    private TableColumn propietario;
+    @FXML
+    private TableColumn marca;
+    @FXML
+    private TableColumn modelo;
+    @FXML
+    private TableColumn placas;
+    @FXML
+    private TableColumn persona;
+    ObservableList<Consulta> lista = FXCollections.observableArrayList();
 
 
     //--------------------Validar contraseña e ingresar----------------------------------
@@ -128,6 +153,39 @@ public class HelloController {
         }//catch
     }//Boton editar
 
+    @FXML
+    protected void initialize() {
+        actualizar();
+    }
+
+    //------------------------BASE DE DATOS--------------------------------
+    @FXML
+    private void actualizar(){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT personales.id, personales.nombre, personales.puesto, automoviles.matricula, " +
+                    "automoviles.modelo, automoviles.marca FROM personales INNER JOIN automoviles;";
+            ResultSet r = stm.executeQuery(sql);
+            //lista.clear();
+            while (r.next()){
+                lista.add(new Consulta(r.getInt("id"),r.getString("nombre"), r.getString("marca"), r.getString("modelo"), r.getString("matricula"), r.getString("puesto")));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                tabla.setItems(lista);
+            }
+            stm.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    //------------------------FIN BASE DE DATOS--------------------------------
+
     //-----------------Boton salir en ventana de agregar-------------------
     @FXML
     protected void btnSalirAgregar(){
@@ -140,4 +198,5 @@ public class HelloController {
         Stage s = (Stage) btnSalirE.getScene().getWindow();
         s.close();
     }
+    //----------------FIN BOTONES SALIR-----------------------------------
 }
