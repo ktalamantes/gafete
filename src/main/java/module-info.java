@@ -7,5 +7,5 @@ module com.example.gafete {
 
     opens com.example.gafete to javafx.fxml;
     exports com.example.gafete;
-    requires java.sql;
+
 }
