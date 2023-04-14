@@ -42,13 +42,14 @@
                         <Image url="@../../../menu.png" />
                     </image>
                 </ImageView>
-            <TableView fx:id="tabla" layoutX="72.0" layoutY="186.0" prefHeight="418.0" prefWidth="766.0">
+            <TableView fx:id="tabla" layoutX="40.0" layoutY="174.0" prefHeight="431.0" prefWidth="839.0">
               <columns>
-                <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No. Registro" />
+                <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No." />
                 <TableColumn fx:id="propietario" prefWidth="201.59999084472656" text="PROPIETARIO" />
+                  <TableColumn fx:id="placas" prefWidth="101.5999755859375" text="MATRICULA" />
                   <TableColumn fx:id="marca" prefWidth="90.4000244140625" text="MARCA" />
-                  <TableColumn fx:id="modelo" prefWidth="152.800048828125" text="MODELO" />
-                  <TableColumn fx:id="placas" prefWidth="101.5999755859375" text="PLACAS" />
+                  <TableColumn fx:id="modelo" prefWidth="116.79998779296875" text="MODELO" />
+                  <TableColumn fx:id="color" prefWidth="111.99993896484375" text="COLOR" />
                   <TableColumn fx:id="persona" prefWidth="116.800048828125" text="PERSONA" />
                   <TableColumn prefWidth="41.60001220703123" text="PDF" />
               </columns>
@@ -63,7 +64,7 @@
                   <Image url="@../../../foot.jpeg" />
                </image>
             </ImageView>
-            <SplitMenuButton fx:id="siguiente" layoutX="720.0" layoutY="165.0" mnemonicParsing="false" text="Visualizar Gafete">
+            <SplitMenuButton fx:id="siguiente" layoutX="698.0" layoutY="65.0" mnemonicParsing="false" text="Visualizar Gafete">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#admin" text="Administrativo" />
                 <MenuItem mnemonicParsing="false" onAction="#alumn" text="Alumno" />

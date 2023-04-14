@@ -15,17 +15,17 @@
             <Image url="@../../../agregar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="73.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="73.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../editar.png" />
          </image>
       </ImageView>
-      <Button layoutX="109.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAgregar" text="Agregar nuevo registro">
+      <Button layoutX="109.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAgregar" text="Agregar nuevo persona">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="108.0" layoutY="111.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="26.0" prefWidth="148.0" text="Editar regitro">
+      <Button layoutX="108.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="26.0" prefWidth="151.0" text="Editar regitro">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -44,5 +44,15 @@
             </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@coche.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="109.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnAgregar" text="Agregar nuevo vehículo">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

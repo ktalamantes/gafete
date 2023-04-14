@@ -11,7 +11,7 @@ public class Enlace {
     public static Connection getConexion(){
         try {
             if (c==null) {
-                String url = "jdbc:mysql://localhost:3306/matriculadb";
+                String url = "jdbc:mysql://localhost:3306/gafete";
                 c = DriverManager.getConnection(url, "root", "");
             }
         }catch (Exception e){

@@ -72,8 +72,27 @@ public class HelloController {
     @FXML
     private TableColumn placas;
     @FXML
+    private TableColumn color;
+    @FXML
     private TableColumn persona;
+    @FXML
+    private TextField txtNombreA;
+    @FXML
+    private TextField txtPersonaA;
+    @FXML
+    private TextField txtMatriculaA;
+    @FXML
+    private TextField txtMarcaA;
+    @FXML
+    private TextField txtModeloA;
+    @FXML
+    private TextField txtColor;
+    @FXML
+    private TextField txtAnioA;
+
+
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
+    ObservableList<ConsultaDB> lista2 = FXCollections.observableArrayList();
 
     @FXML
     private Button Cerrar;
@@ -197,12 +216,17 @@ public class HelloController {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "SELECT personales.id, personales.nombre, personales.puesto, automoviles.matricula, " +
+            /*String sql = "SELECT personales.id, personales.nombre, personales.puesto, automoviles.matricula, " +
                     "automoviles.modelo, automoviles.marca FROM personales INNER JOIN automoviles;";
             ResultSet r = stm.executeQuery(sql);
             //lista.clear();
             while (r.next()){
-                lista.add(new Consulta(r.getInt("id"),r.getString("nombre"), r.getString("marca"), r.getString("modelo"), r.getString("matricula"), r.getString("puesto")));
+                lista.add(new Consulta(r.getInt("id"),
+                        r.getString("nombre"),
+                        r.getString("marca"),
+                        r.getString("modelo"),
+                        r.getString("matricula"),
+                        r.getString("puesto")));
                 id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
                 marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
@@ -210,12 +234,63 @@ public class HelloController {
                 placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
                 tabla.setItems(lista);
+             */
+            String sql = "SELECT persona.id, persona.nombre, automovil.matricula, automovil.marca, " +
+                    "automovil.modelo, automovil.color, persona.puesto FROM persona INNER JOIN automovil;";
+            ResultSet r = stm.executeQuery(sql);
+            while (r.next()){
+                lista2.add(new ConsultaDB(r.getInt("id"),
+                        r.getString("nombre"),
+                        r.getString("matricula"),
+                        r.getString("marca"),
+                        r.getString("modelo"),
+                        r.getString("color"),
+                        r.getString("puesto")));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                tabla.setItems(lista2);
             }
             stm.close();
         }catch (Exception e){
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    protected void agregarUsuario(ActionEvent evt){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "INSERT INTO persona VALUES (0, '" + txtNombreA.getText() + "','" + txtPersonaA.getText() + "')";
+            System.out.println("DATOS INSERTADOS");
+            stm.execute(sql);
+            actualizar();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void agregarAuto(ActionEvent evt){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            /*String sql = "INSERT INTO automovil VALUES (0, '" + txtMatriculaA.getText() + "','" + txtPersonaA.getText() + "')";
+             */
+            String sql = "INSERT INTO automovil VALUES (0, '" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
+                    txtModeloA.getText() + "','" + txtColor.getText() + "')";
+            System.out.println("DATOS INSERTADOS");
+            stm.execute(sql);
+            actualizar();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     //------------------------FIN BASE DE DATOS--------------------------------
 

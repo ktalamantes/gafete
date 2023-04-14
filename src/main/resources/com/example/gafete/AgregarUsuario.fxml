@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,14 +12,13 @@
       <Label layoutX="49.0" layoutY="75.0" text="Propietario:" />
       <Label layoutX="49.0" layoutY="134.0" text="Marca:" />
       <Label layoutX="49.0" layoutY="192.0" text="Modelo:" />
-      <Label layoutX="348.0" layoutY="143.0" text="Placa:" />
-      <Label layoutX="341.0" layoutY="191.0" text="Persona:" />
-      <ChoiceBox layoutX="400.0" layoutY="187.0" prefWidth="150.0" />
-      <TextField layoutX="118.0" layoutY="71.0" prefHeight="26.0" prefWidth="310.0" />
-      <TextField layoutX="93.0" layoutY="131.0" />
-      <TextField layoutX="111.0" layoutY="187.0" />
-      <TextField layoutX="393.0" layoutY="139.0" />
-      <Button layoutX="411.0" layoutY="253.0" mnemonicParsing="false" text="Guardar" />
+      <Label layoutX="337.0" layoutY="143.0" text="Matricula:" />
+      <Label layoutX="341.0" layoutY="191.0" text="Puesto:" />
+      <TextField fx:id="txtNombreA" layoutX="118.0" layoutY="71.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="txtMarcaA" layoutX="93.0" layoutY="131.0" />
+      <TextField fx:id="txtModeloA" layoutX="111.0" layoutY="187.0" />
+      <TextField fx:id="txtMatriculaA" layoutX="393.0" layoutY="139.0" />
+      <Button layoutX="411.0" layoutY="253.0" mnemonicParsing="false" onAction="#agregarUsuario" text="Guardar" />
       <Button fx:id="btnSalirA" layoutX="499.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnSalirAgregar" text="Cancelar" />
       <Pane opacity="0.33" prefHeight="40.0" prefWidth="604.0" style="-fx-background-color: #C0B7FA;">
          <children>
@@ -31,5 +29,8 @@
             </Label>
          </children>
       </Pane>
+      <Label layoutX="53.0" layoutY="244.0" text="Color:" />
+      <TextField fx:id="txtColor" layoutX="101.0" layoutY="240.0" />
+      <TextField fx:id="txtPersonaA" layoutX="396.0" layoutY="187.0" />
    </children>
 </AnchorPane>
