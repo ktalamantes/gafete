@@ -216,28 +216,9 @@ public class HelloController {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            /*String sql = "SELECT personales.id, personales.nombre, personales.puesto, automoviles.matricula, " +
-                    "automoviles.modelo, automoviles.marca FROM personales INNER JOIN automoviles;";
+            String sql = "SELECT * FROM registros";
             ResultSet r = stm.executeQuery(sql);
-            //lista.clear();
-            while (r.next()){
-                lista.add(new Consulta(r.getInt("id"),
-                        r.getString("nombre"),
-                        r.getString("marca"),
-                        r.getString("modelo"),
-                        r.getString("matricula"),
-                        r.getString("puesto")));
-                id.setCellValueFactory(new PropertyValueFactory<>("id"));
-                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
-                tabla.setItems(lista);
-             */
-            String sql = "SELECT persona.id, persona.nombre, automovil.matricula, automovil.marca, " +
-                    "automovil.modelo, automovil.color, persona.puesto FROM persona INNER JOIN automovil;";
-            ResultSet r = stm.executeQuery(sql);
+            lista2.clear();
             while (r.next()){
                 lista2.add(new ConsultaDB(r.getInt("id"),
                         r.getString("nombre"),
@@ -259,6 +240,7 @@ public class HelloController {
         }catch (Exception e){
             e.printStackTrace();
         }
+        //tabla.refresh();
 
     }
 
@@ -267,13 +249,23 @@ public class HelloController {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "INSERT INTO persona VALUES (0, '" + txtNombreA.getText() + "','" + txtPersonaA.getText() + "')";
+            String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" +
+                    txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
+                    txtPersonaA.getText() + "')";
             System.out.println("DATOS INSERTADOS");
             stm.execute(sql);
             actualizar();
         }catch (Exception e){
             e.printStackTrace();
+            System.out.println(e+ "No se insertaron datos!!\n");
         }
+        txtPersonaA.setText("");
+        txtColor.setText("");
+        txtNombreA.setText("");
+        txtModeloA.setText("");
+        txtMarcaA.setText("");
+        txtMatriculaA.setText("");
+        tabla.refresh();
     }
 
     @FXML

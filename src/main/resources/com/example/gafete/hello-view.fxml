@@ -20,7 +20,7 @@
             <Image url="@../../../editar.png" />
          </image>
       </ImageView>
-      <Button layoutX="109.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAgregar" text="Agregar nuevo persona">
+      <Button layoutX="109.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="26.0" prefWidth="151.0" text="Agregar nuevo registro">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
