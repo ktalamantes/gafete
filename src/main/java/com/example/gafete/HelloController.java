@@ -17,6 +17,8 @@ import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.DriverManager;
@@ -30,13 +32,11 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+
 import java.sql.Connection;
 
 
 public class HelloController {
-
-
-
 
     @FXML
     private ImageView agregarImagen;
@@ -90,9 +90,14 @@ public class HelloController {
     @FXML
     private TextField txtAnioA;
 
+    @FXML private TextField pro;
+    @FXML private TextField mar;
+    @FXML private TextField mod;
+    @FXML private TextField pla;
+    @FXML private TextField per;
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
-    ObservableList<ConsultaDB> lista2 = FXCollections.observableArrayList();
+    ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
     @FXML
     private Button Cerrar;
@@ -219,15 +224,27 @@ public class HelloController {
             String sql = "SELECT * FROM registros";
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
+
+            /*tabla = new TableView<Consulta>();
+           id = new TableColumn<>("id");
+           propietario = new TableColumn<>("nombre");
+            placas = new TableColumn<>("matricula");
+            marca = new TableColumn<>("marca");
+            modelo = new TableColumn<>("modelo");
+            color = new TableColumn<>("color");
+            persona = new TableColumn<>("persona");
+             */
+
             while (r.next()){
-                lista2.add(new ConsultaDB(r.getInt("id"),
+                lista2.add(new Consulta(r.getInt("id"),
                         r.getString("nombre"),
                         r.getString("matricula"),
                         r.getString("marca"),
                         r.getString("modelo"),
                         r.getString("color"),
                         r.getString("puesto")));
-                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                id.setCellValueFactory(new PropertyValueFactory<Consulta,Integer>("id"));
+                System.out.println(r.getString("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
                 placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
                 marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
@@ -359,6 +376,44 @@ public class HelloController {
 
         }//catch
     }//gafeteDirectivo
+
+    //EDITAR DANDO DOBLE CLICK
+    public void dobleclick(MouseEvent mevt){
+        if(mevt.getClickCount()>1){
+            if(tabla.getSelectionModel().getSelectedItem()!=null){
+                try{
+                    Stage stage = new Stage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("editar.fxml"));
+                    Scene scene = new Scene(loader.load());
+                    stage.setScene(scene);
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    editarController ec = loader.getController();
+                    ConsultaDB cdb = (ConsultaDB) tabla.getSelectionModel().getSelectedItem();
+                    ec.setId(cdb.getId());
+                    try{
+                        Connection c = Enlace.getConexion();
+                        Statement stm = c.createStatement();
+                        String sql = "SELECT * FROM registros WHERE id = '"+cdb.getId()+"';";
+                        ResultSet r = stm.executeQuery(sql);
+                        while (r.next()){
+                            pro.setText(r.getString("pro"));
+                            mar.setText(r.getString("mar"));
+                            mod.setText(r.getString("mod"));
+                            pla.setText(r.getString("pla"));
+                            per.setText(r.getString("per"));
+
+                        }
+                        stm.close();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    stage.show();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 
 }

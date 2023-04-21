@@ -47,4 +47,9 @@ public class personal {
     public void setArea(String area) {
         this.area = area;
     }
+
+    public String toString(){
+        return this.nombre;
+    }
 }
+

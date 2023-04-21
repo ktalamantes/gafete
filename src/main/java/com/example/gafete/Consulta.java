@@ -3,17 +3,19 @@ package com.example.gafete;
 public class Consulta {
     private int id;
     private String nombre;
+    private String matricula;
     private String marca;
     private String modelo;
-    private String matricula;
+    private String color;
     private String puesto;
 
-    public Consulta(int id, String nombre, String matricula, String marca, String modelo, String puesto) {
+    public Consulta(int id, String nombre, String matricula, String marca, String modelo, String color, String puesto) {
         this.id = id;
         this.nombre = nombre;
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
+        this.color = color;
         this.puesto = puesto;
     }
 
@@ -55,6 +57,14 @@ public class Consulta {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getPuesto() {
