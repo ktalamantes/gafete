@@ -20,7 +20,7 @@
                         <Image url="@../../../tec.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="447.0" fitWidth="552.0" layoutX="92.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="0.0">
+                <ImageView fitHeight="447.0" fitWidth="552.0" layoutX="95.0" layoutY="14.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="42.19999999999999" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="96.04781494140627" AnchorPane.topAnchor="14.0">
                     <image>
                         <Image url="@../../../gamoss.png" />
                     </image>
@@ -36,7 +36,7 @@
                     </font>
                 </Text>
                 <TextField fx:id="usuario" alignment="CENTER" layoutX="159.0" layoutY="205.0" prefHeight="42.0" prefWidth="419.0" promptText="Usuario" style="-fx-border-color: #1361E8;" />
-                <Button layoutX="313.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnValidar" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: WHITE; -fx-border-color: #1361E8;" text="INGRESAR" />
+                <Button fx:id="btnValidar" layoutX="313.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnValidar" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: WHITE; -fx-border-color: #1361E8;" text="INGRESAR" />
             <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="165.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../usuario.png" />

@@ -89,6 +89,8 @@ public class HelloController {
     private TextField txtColor;
     @FXML
     private TextField txtAnioA;
+    @FXML
+    private Button btnValidar;
 
     @FXML private TextField pro;
     @FXML private TextField mar;
@@ -121,6 +123,8 @@ public class HelloController {
             try {
                 Stage stage = new Stage();//Crear una nueva ventana
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("gafete.fxml"));
+                Stage cerrar = (Stage) btnValidar.getScene().getWindow();
+                cerrar.close();
                 Scene escena = new Scene(loader.load());
                 stage.setTitle("editar");
                 stage.setScene(escena);
@@ -133,7 +137,7 @@ public class HelloController {
         }
     }//----------------Boton validar-------------------------------
 
-    //-------------Muestra la contraseña-------------
+    //------------------------Muestra la contraseña----------------------
     @FXML
     void changeVisiility(ActionEvent event){
         if(box.isSelected()){
