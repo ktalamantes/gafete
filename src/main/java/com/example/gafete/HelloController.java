@@ -101,17 +101,6 @@ public class HelloController {
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
      ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
-    @FXML
-    private Button Cerrar;
-    @FXML
-    private SplitMenuButton siguiente;
-    @FXML
-    private MenuItem  Administrativo;
-    @FXML
-    private MenuItem  Alumno;
-    private MenuItem  Gastronomia;
-    @FXML
-    private MenuItem  Directivo;
 
 
 
@@ -311,64 +300,6 @@ public class HelloController {
 
     //----------------FIN BOTONES SALIR-----------------------------------
 
-    @FXML
-    protected void admin(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Administrativo.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("gafete");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }//catch
-    }//gafeteAdministrativo
-
-
-    @FXML
-    protected void alumn (){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Alumno.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("gafete");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }//catch
-    }//gafeteAlumno
-    @FXML
-    protected void gastro (){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gastronomia.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("gafete");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }//catch
-    }//gafeteGastronomia
-    @FXML
-    protected void direct (){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Directivo.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("gafete");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }//catch
-    }//gafeteDirectivo
 
     //EDITAR DANDO DOBLE CLICK
     public void dobleclick(MouseEvent mevt){
