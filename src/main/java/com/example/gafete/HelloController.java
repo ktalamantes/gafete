@@ -99,7 +99,7 @@ public class HelloController {
     @FXML private TextField per;
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
-    ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
+     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
     @FXML
     private Button Cerrar;
@@ -228,18 +228,8 @@ public class HelloController {
             String sql = "SELECT * FROM registros";
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
-
-            /*tabla = new TableView<Consulta>();
-           id = new TableColumn<>("id");
-           propietario = new TableColumn<>("nombre");
-            placas = new TableColumn<>("matricula");
-            marca = new TableColumn<>("marca");
-            modelo = new TableColumn<>("modelo");
-            color = new TableColumn<>("color");
-            persona = new TableColumn<>("persona");
-             */
-
             while (r.next()){
+                tabla.setItems(lista2);
                 lista2.add(new Consulta(r.getInt("id"),
                         r.getString("nombre"),
                         r.getString("matricula"),
@@ -247,7 +237,7 @@ public class HelloController {
                         r.getString("modelo"),
                         r.getString("color"),
                         r.getString("puesto")));
-                id.setCellValueFactory(new PropertyValueFactory<Consulta,Integer>("id"));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 System.out.println(r.getString("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
                 placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
@@ -255,7 +245,6 @@ public class HelloController {
                 modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
-                tabla.setItems(lista2);
             }
             stm.close();
         }catch (Exception e){
