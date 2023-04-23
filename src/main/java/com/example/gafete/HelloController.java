@@ -5,13 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-import javafx.application.Platform;
-import javafx.css.converter.EffectConverter;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
@@ -21,19 +17,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-
-
-import java.sql.Connection;
 
 
 public class HelloController {
@@ -58,7 +44,9 @@ public class HelloController {
     @FXML
     private CheckBox box;
     @FXML
-    private ImageView ojo;
+    private ImageView ojoVer;
+    @FXML
+    private ImageView ojoOcultar;
     @FXML
     private TableView tabla;
     @FXML
@@ -141,6 +129,7 @@ public class HelloController {
     }//Ver contraseña
 
 
+
     //------------METODO QUE ABRE "CUENTA" DANDO CLICK EN IMAGEN-------------------
     @FXML
     protected void imagenAgregar(){
@@ -202,6 +191,20 @@ public class HelloController {
             e.printStackTrace();
         }//catch
     }//Boton editar
+
+    @FXML
+    protected void btnRegistar(){
+        try{
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Registro.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("editar");
+            stage.setScene(escena);
+            stage.showAndWait();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     protected void initialize() {
