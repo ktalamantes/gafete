@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -38,7 +37,6 @@
                 <Button fx:id="btnValidar" layoutX="306.0" layoutY="391.0" mnemonicParsing="false" onAction="#btnValidar" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: WHITE; -fx-border-color: #1361E8;" text="INGRESAR" />
             <TextField fx:id="txtUsuario" alignment="CENTER" layoutX="236.0" layoutY="323.0" prefHeight="45.0" prefWidth="236.0" />
             <PasswordField fx:id="contrasenia" alignment="CENTER" layoutX="236.0" layoutY="323.0" prefHeight="45.0" prefWidth="236.0" promptText="Contraseña" />
-            <CheckBox fx:id="box" layoutX="478.0" layoutY="337.0" mnemonicParsing="false" onAction="#changeVisiility" text="VER" />
             <ImageView fitHeight="44.0" fitWidth="714.0" layoutX="-3.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../foot.jpeg" />
@@ -53,6 +51,16 @@
             <Label layoutX="236.0" layoutY="301.0" text="Contraseña:" />
             <Label layoutX="195.0" layoutY="442.0" text="¿No tienes una cuenta o quieres registrarte?" />
             <Hyperlink layoutX="428.0" layoutY="439.0" onAction="#btnRegistar" text="Haz clic aquí." />
+            <ImageView fx:id="ojoOcultar" fitHeight="24.0" fitWidth="27.0" layoutX="480.0" layoutY="334.0" onMousePressed="#mostrarContra" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@invisible.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ojoVer" fitHeight="24.0" fitWidth="27.0" layoutX="480.0" layoutY="334.0" onMousePressed="#mostrarContra" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ojo.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
    </bottom>

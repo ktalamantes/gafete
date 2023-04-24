@@ -111,22 +111,28 @@ public class HelloController {
             }//catch
         }else {
             System.out.println("ACCESO DENEGADO");
+            
         }
     }//----------------Boton validar-------------------------------
 
     //------------------------Muestra la contraseña----------------------
+
     @FXML
-    void changeVisiility(ActionEvent event){
-        if(box.isSelected()){
-            txtUsuario.setText(contrasenia.getText());
+    public void mostrarContra(){
+        if(ojoVer.isVisible()){
+            ojoVer.setVisible(false);
+            ojoOcultar.setVisible(true);
             txtUsuario.setVisible(true);
             contrasenia.setVisible(false);
-            return;
+            txtUsuario.setText(contrasenia.getText());
+        } else if (ojoOcultar.isVisible()) {
+            ojoOcultar.setVisible(false);
+            ojoVer.setVisible(true);
+            txtUsuario.setVisible(false);
+            contrasenia.setVisible(true);
+            contrasenia.setText(txtUsuario.getText());
         }
-        contrasenia.setText(txtUsuario.getText());
-        contrasenia.setVisible(true);
-        txtUsuario.setVisible(false);
-    }//Ver contraseña
+    }
 
 
 
@@ -194,16 +200,7 @@ public class HelloController {
 
     @FXML
     protected void btnRegistar(){
-        try{
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Registro.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        HelloApplication.setVista("Registro");
     }
 
     @FXML
