@@ -35,6 +35,7 @@
                 </Text>
                 <TextField fx:id="usuario" alignment="CENTER" layoutX="239.0" layoutY="253.0" prefHeight="42.0" prefWidth="231.0" promptText="Correo" style="-fx-border-color: #1361E8;" />
                 <Button fx:id="btnValidar" layoutX="306.0" layoutY="391.0" mnemonicParsing="false" onAction="#btnValidar" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: WHITE; -fx-border-color: #1361E8;" text="INGRESAR" />
+            <Rectangle fx:id="erroContraR" arcHeight="5.0" arcWidth="5.0" fill="#e70000" height="49.0" layoutX="235.0" layoutY="322.0" stroke="#ec0000" strokeType="INSIDE" style="-fx-fill: #e70000;" visible="false" width="239.0" />
             <TextField fx:id="txtUsuario" alignment="CENTER" layoutX="236.0" layoutY="323.0" prefHeight="45.0" prefWidth="236.0" />
             <PasswordField fx:id="contrasenia" alignment="CENTER" layoutX="236.0" layoutY="323.0" prefHeight="45.0" prefWidth="236.0" promptText="Contraseña" />
             <ImageView fitHeight="44.0" fitWidth="714.0" layoutX="-3.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
@@ -61,6 +62,7 @@
                   <Image url="@ojo.png" />
                </image>
             </ImageView>
+            <Label fx:id="errorContraseña" layoutX="284.0" layoutY="370.0" text="¡La contraseña es invalida!" textFill="RED" visible="false" />
             </children>
         </AnchorPane>
    </bottom>

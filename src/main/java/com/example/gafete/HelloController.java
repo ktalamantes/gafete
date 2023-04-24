@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -85,6 +86,12 @@ public class HelloController {
     @FXML private TextField mod;
     @FXML private TextField pla;
     @FXML private TextField per;
+    @FXML
+     private Label errorContraseña;
+    @FXML
+    private Rectangle erroContraR;
+    @FXML
+    private Button btnCerrarSesion;
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
      ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
@@ -111,7 +118,8 @@ public class HelloController {
             }//catch
         }else {
             System.out.println("ACCESO DENEGADO");
-            
+            errorContraseña.setVisible(true);
+            erroContraR.setVisible(true);
         }
     }//----------------Boton validar-------------------------------
 
@@ -182,6 +190,11 @@ public class HelloController {
             e.printStackTrace();
         }//catch
     }//boton agregar
+
+    @FXML
+    protected void cerrarSesion(){
+        HelloApplication.setVista("login");
+    }
 
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
     @FXML
