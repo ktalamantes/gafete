@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
@@ -92,6 +93,9 @@ public class HelloController {
     private Rectangle erroContraR;
     @FXML
     private Button btnCerrarSesion;
+
+    @FXML private TextField buscar;
+
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
      ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
@@ -352,5 +356,29 @@ public class HelloController {
         }
     }
 
+    @FXML
+    public void buscarMatricula(KeyEvent evt) {
+        Connection c = Enlace.getConexion();
+        try {
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM registros WHERE matricula LIKE '" + buscar.getText() + "%'";
+            ResultSet r = stm.executeQuery(sql);
+            lista2.clear();
+            while (r.next()) {
+                tabla.setItems(lista2);
+                lista2.add(new Consulta(r.getInt("id"), r.getString("Nombre"), r.getString("matricula"), r.getString("marca"), r.getString("modelo"), r.getString("color"), r.getString("puesto")));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
 
+            }
+            stm.execute(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
