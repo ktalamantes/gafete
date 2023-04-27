@@ -82,7 +82,7 @@ public class HelloController {
     @FXML
     private Button btnValidar;
 
-    @FXML private TextField pro;
+    @FXML private TextField prop;
     @FXML private TextField mar;
     @FXML private TextField mod;
     @FXML private TextField pla;
@@ -99,6 +99,19 @@ public class HelloController {
             private Button btnG;
     @FXML
             private Button btnSesion;
+
+    @FXML private TextField txtnombre;
+
+
+    @FXML private TextField txtcorreo;
+
+
+    @FXML private TextField txtcontraseña;
+
+
+    @FXML private Button registrar;
+
+    @FXML private Button CerrarVentana;
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
      ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
@@ -378,7 +391,8 @@ public class HelloController {
                         String sql = "SELECT * FROM registros WHERE id = '"+cdb.getId()+"';";
                         ResultSet r = stm.executeQuery(sql);
                         while (r.next()){
-                            pro.setText(r.getString("pro"));
+
+                            prop.setText(r.getString("prop"));
                             mar.setText(r.getString("mar"));
                             mod.setText(r.getString("mod"));
                             pla.setText(r.getString("pla"));
@@ -421,5 +435,32 @@ public class HelloController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    // ----Buton De Registrar Usuario----
+    @FXML
+    protected void RegistrarUsuario (ActionEvent evt){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "INSERT INTO usuarios VALUES (0, '" + txtnombre.getText() + "','" + txtcorreo.getText() + "','" +
+                    txtcontraseña.getText() + "')";
+            System.out.println("DATOS INSERTADOS");
+            stm.execute(sql);
+            actualizar();
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(e+ "No se insertaron datos!!\n");
+        }
+        txtnombre.setText("");
+        txtcorreo.setText("");
+        txtcontraseña.setText("");
+
+        HelloApplication.setVista("login");
+
+    }
+
+    @FXML
+    public void CerrarAgregar(){
+        HelloApplication.setVista("Login");
     }
 }
