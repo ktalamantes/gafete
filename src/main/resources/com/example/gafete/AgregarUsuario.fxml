@@ -18,7 +18,7 @@
       <TextField fx:id="txtMarcaA" layoutX="93.0" layoutY="131.0" />
       <TextField fx:id="txtModeloA" layoutX="111.0" layoutY="187.0" />
       <TextField fx:id="txtMatriculaA" layoutX="393.0" layoutY="139.0" />
-      <Button layoutX="411.0" layoutY="253.0" mnemonicParsing="false" onAction="#agregarUsuario" text="Guardar" />
+      <Button fx:id="btnG" layoutX="411.0" layoutY="253.0" mnemonicParsing="false" onAction="#agregarBtn" text="Guardar" />
       <Button fx:id="btnSalirA" layoutX="499.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnSalirAgregar" text="Cancelar" />
       <Pane opacity="0.33" prefHeight="40.0" prefWidth="604.0" style="-fx-background-color: #C0B7FA;">
          <children>

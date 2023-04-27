@@ -95,7 +95,10 @@ public class HelloController {
     private Button btnCerrarSesion;
 
     @FXML private TextField buscar;
-
+    @FXML
+            private Button btnG;
+    @FXML
+            private Button btnSesion;
 
     ObservableList<Consulta> lista = FXCollections.observableArrayList();
      ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
@@ -197,7 +200,18 @@ public class HelloController {
 
     @FXML
     protected void cerrarSesion(){
-        HelloApplication.setVista("login");
+        try {
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage cerrar = (Stage) btnCerrarSesion.getScene().getWindow();
+            cerrar.close();
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("editar");
+            stage.setScene(escena);
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }//catch
     }
 
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
@@ -231,7 +245,8 @@ public class HelloController {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "SELECT * FROM registros";
+            //String sql = "SELECT * FROM registros";
+            String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
             while (r.next()){
@@ -282,6 +297,32 @@ public class HelloController {
         txtMarcaA.setText("");
         txtMatriculaA.setText("");
         tabla.refresh();
+    }
+    @FXML
+    protected void agregarBtn(){
+        try{
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "INSERT INTO automovil VALUES (0, '" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
+                    txtModeloA.getText() + "','" + txtColor.getText() + "')";
+            System.out.println("DATOS INSERTADOS EN automovil");
+            stm.execute(sql);
+            String sql2 = "INSERT INTO persona VALUES (0, '" + txtNombreA.getText()+ "','" + txtPersonaA.getText() + "')";
+            stm.execute(sql2);
+            System.out.println("DATOS INSERTADOS EN persona");
+            actualizar();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        txtPersonaA.setText("");
+        txtColor.setText("");
+        txtNombreA.setText("");
+        txtModeloA.setText("");
+        txtMarcaA.setText("");
+        txtMatriculaA.setText("");
+        Stage cerrar = (Stage) btnG.getScene().getWindow();
+        cerrar.close();
+
     }
 
     @FXML
