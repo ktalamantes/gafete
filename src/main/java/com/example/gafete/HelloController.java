@@ -82,7 +82,7 @@ public class HelloController {
     @FXML
     private Button btnValidar;
 
-    @FXML private TextField pro;
+    @FXML private TextField prop;
     @FXML private TextField mar;
     @FXML private TextField mod;
     @FXML private TextField pla;
@@ -378,7 +378,8 @@ public class HelloController {
                         String sql = "SELECT * FROM registros WHERE id = '"+cdb.getId()+"';";
                         ResultSet r = stm.executeQuery(sql);
                         while (r.next()){
-                            pro.setText(r.getString("pro"));
+
+                            prop.setText(r.getString("prop"));
                             mar.setText(r.getString("mar"));
                             mod.setText(r.getString("mod"));
                             pla.setText(r.getString("pla"));
