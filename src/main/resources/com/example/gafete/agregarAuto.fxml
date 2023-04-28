@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="234.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
       <AnchorPane prefHeight="232.0" prefWidth="598.0" style="-fx-background-color: #D7E5FA;">

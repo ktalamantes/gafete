@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="675.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
+    <center>
+        <AnchorPane prefHeight="671.0" prefWidth="966.0">
+            <children>
+                <ImageView fitHeight="567.0" fitWidth="700.0" layoutX="112.0" layoutY="57.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../gamoss.png" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="buscar" alignment="CENTER" layoutX="351.0" layoutY="102.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="363.0" promptText="Buscar matricula..." style="-fx-border-color: #1361E8; -fx-border-radius: 12;" />
+                <Text layoutX="364.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAFETE DE VEHICULOS">
+                    <font>
+                        <Font name="Brush Script MT Italic" size="26.0" />
+                    </font>
+                </Text>
+                <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="683.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../lupa.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="873.0" layoutY="89.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="873.0">
+                    <image>
+                        <Image url="@../../../usuario1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="808.0" layoutY="94.0" onMouseClicked="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="808.0" AnchorPane.rightAnchor="94.86868667602539">
+                    <image>
+                        <Image url="@../../../menu.png" />
+                    </image>
+                </ImageView>
+            <TableView fx:id="tablita" layoutX="35.0" layoutY="159.0" onMouseClicked="#dobleclick" prefHeight="439.0" prefWidth="911.0">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No." />
+                <TableColumn fx:id="propietario" prefWidth="269.59999084472656" text="PROPIETARIO" />
+                  <TableColumn fx:id="placas" prefWidth="141.60003662109375" text="MATRICULA" />
+                  <TableColumn fx:id="marca" prefWidth="83.20001220703125" text="MARCA" />
+                  <TableColumn fx:id="modelo" prefWidth="114.4000244140625" text="MODELO" />
+                  <TableColumn fx:id="color" prefWidth="119.99993896484375" text="COLOR" />
+                  <TableColumn fx:id="persona" prefWidth="124.7999267578125" text="PERSONA" />
+              </columns>
+            </TableView>
+            <ImageView fitHeight="184.0" fitWidth="910.0" opacity="0.79" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../tec.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="56.0" fitWidth="1012.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../foot.jpeg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

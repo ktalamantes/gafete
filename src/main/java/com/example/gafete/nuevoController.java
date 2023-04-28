@@ -1,16 +1,12 @@
 package com.example.gafete;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -23,16 +19,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
-public class HelloController {
-
+public class nuevoController {
     @FXML
     private ImageView agregarImagen;
     @FXML
     private ImageView editarImagen;
-    @FXML private ImageView tec;
-    @FXML private ImageView candado1;
-    @FXML private ImageView gamoss;
+    @FXML
+    private ImageView tec;
+    @FXML
+    private ImageView candado1;
+    @FXML
+    private ImageView gamoss;
     @FXML
     private Button btnSalirA;
     @FXML
@@ -90,7 +87,7 @@ public class HelloController {
     @FXML private TextField pla;
     @FXML private TextField per;
     @FXML
-     private Label errorContraseña;
+    private Label errorContraseña;
     @FXML
     private Rectangle erroContraR;
     @FXML
@@ -98,9 +95,9 @@ public class HelloController {
 
     @FXML private TextField buscar;
     @FXML
-            private Button btnG;
+    private Button btnG;
     @FXML
-            private Button btnSesion;
+    private Button btnSesion;
 
     @FXML private TextField txtnombre;
 
@@ -115,8 +112,7 @@ public class HelloController {
 
     @FXML private Button CerrarVentana;
 
-
-     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
+    ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
 
 
@@ -265,7 +261,6 @@ public class HelloController {
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
             while (r.next()){
-                //tabla.setItems(lista2);
                 tablita.setItems(lista2);
                 lista2.add(new Consulta(r.getInt("id"),
                         r.getString("nombre"),
@@ -378,7 +373,7 @@ public class HelloController {
     //EDITAR DANDO DOBLE CLICK
     public void dobleclick(MouseEvent mevt){
         if(mevt.getClickCount()>1){
-            if(tabla.getSelectionModel().getSelectedItem()!=null){
+            if(tablita.getSelectionModel().getSelectedItem()!=null){
                 try{
                     Stage stage = new Stage();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("editar.fxml"));
@@ -386,7 +381,7 @@ public class HelloController {
                     stage.setScene(scene);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     editarController ec = loader.getController();
-                    ConsultaDB cdb = (ConsultaDB) tabla.getSelectionModel().getSelectedItem();
+                    ConsultaDB cdb = (ConsultaDB) tablita.getSelectionModel().getSelectedItem();
                     ec.setId(cdb.getId());
                     try{
                         Connection c = Enlace.getConexion();
