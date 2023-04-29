@@ -30,7 +30,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="165.0" fitWidth="61.0" layoutX="301.0" layoutY="-1.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tec" fitHeight="165.0" fitWidth="61.0" layoutX="301.0" layoutY="-1.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../iconos.png" />
          </image>
@@ -49,7 +49,7 @@
             <Image url="@coche.png" />
          </image>
       </ImageView>
-      <Button layoutX="109.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnAgregar" text="Agregar nuevo vehículo">
+      <Button layoutX="109.0" layoutY="88.0" mnemonicParsing="false" text="Agregar nuevo vehículo">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

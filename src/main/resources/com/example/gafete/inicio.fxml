@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,15 +11,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="675.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
+<BorderPane prefHeight="675.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
     <center>
         <AnchorPane prefHeight="671.0" prefWidth="966.0">
             <children>
-                <ImageView fitHeight="567.0" fitWidth="700.0" layoutX="112.0" layoutY="57.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../gamoss.png" />
-                    </image>
-                </ImageView>
                 <TextField fx:id="buscar" alignment="CENTER" layoutX="351.0" layoutY="102.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="363.0" promptText="Buscar matricula..." style="-fx-border-color: #1361E8; -fx-border-radius: 12;" />
                 <Text layoutX="364.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAFETE DE VEHICULOS">
                     <font>
@@ -35,12 +31,12 @@
                         <Image url="@../../../usuario1.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="808.0" layoutY="94.0" onMouseClicked="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="808.0" AnchorPane.rightAnchor="94.86868667602539">
+                <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="802.0" layoutY="94.0" onMouseClicked="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="802.0" AnchorPane.rightAnchor="100.86868667602539">
                     <image>
                         <Image url="@../../../menu.png" />
                     </image>
                 </ImageView>
-            <TableView fx:id="tablita" layoutX="35.0" layoutY="159.0" onMouseClicked="#dobleclick" prefHeight="439.0" prefWidth="911.0">
+            <TableView fx:id="tablita" layoutX="34.0" layoutY="201.0" onMouseClicked="#dobleclick" prefHeight="330.0" prefWidth="911.0">
               <columns>
                 <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No." />
                 <TableColumn fx:id="propietario" prefWidth="269.59999084472656" text="PROPIETARIO" />
@@ -61,6 +57,7 @@
                   <Image url="@../../../foot.jpeg" />
                </image>
             </ImageView>
+            <Button layoutX="729.0" layoutY="109.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
             </children>
         </AnchorPane>
     </center>

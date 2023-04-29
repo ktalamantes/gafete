@@ -21,12 +21,6 @@ import java.sql.Statement;
 
 public class nuevoController {
     @FXML
-    private ImageView agregarImagen;
-    @FXML
-    private ImageView editarImagen;
-    @FXML
-    private ImageView tec;
-    @FXML
     private ImageView candado1;
     @FXML
     private ImageView gamoss;
@@ -34,18 +28,6 @@ public class nuevoController {
     private Button btnSalirA;
     @FXML
     private Button btnSalirE;
-    @FXML
-    private TextField txtUsuario;
-    @FXML
-    private TextField usuario;
-    @FXML
-    private PasswordField contrasenia;
-    @FXML
-    private CheckBox box;
-    @FXML
-    private ImageView ojoVer;
-    @FXML
-    private ImageView ojoOcultar;
     @FXML
     private TableView tabla;
     @FXML
@@ -114,51 +96,6 @@ public class nuevoController {
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
-
-
-
-    //--------------------Validar contraseña e ingresar----------------------------------
-    @FXML
-    protected void btnValidar(){
-
-        if (usuario.getText().equals("admin") && contrasenia.getText().equals("12345")){
-            try {
-                Stage stage = new Stage();//Crear una nueva ventana
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("inicio.fxml"));
-                Stage cerrar = (Stage) btnValidar.getScene().getWindow();
-                cerrar.close();
-                Scene escena = new Scene(loader.load());
-                stage.setTitle("editar");
-                stage.setScene(escena);
-                stage.showAndWait();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }//catch
-        }else {
-            System.out.println("ACCESO DENEGADO");
-            errorContraseña.setVisible(true);
-            erroContraR.setVisible(true);
-        }
-    }//----------------Boton validar-------------------------------
-
-    //------------------------Muestra la contraseña----------------------
-
-    @FXML
-    public void mostrarContra(){
-        if(ojoVer.isVisible()){
-            ojoVer.setVisible(false);
-            ojoOcultar.setVisible(true);
-            txtUsuario.setVisible(true);
-            contrasenia.setVisible(false);
-            txtUsuario.setText(contrasenia.getText());
-        } else if (ojoOcultar.isVisible()) {
-            ojoOcultar.setVisible(false);
-            ojoVer.setVisible(true);
-            txtUsuario.setVisible(false);
-            contrasenia.setVisible(true);
-            contrasenia.setText(txtUsuario.getText());
-        }
-    }
 
 
 
@@ -250,7 +187,40 @@ public class nuevoController {
         actualizar();
     }
 
+
     //------------------------BASE DE DATOS--------------------------------
+    @FXML
+    private void refrescar(){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            //String sql = "SELECT * FROM registros";
+            String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
+            ResultSet r = stm.executeQuery(sql);
+            lista2.clear();
+            while (r.next()){
+                tablita.setItems(lista2);
+                lista2.add(new Consulta(r.getInt("id"),
+                        r.getString("nombre"),
+                        r.getString("matricula"),
+                        r.getString("marca"),
+                        r.getString("modelo"),
+                        r.getString("color"),
+                        r.getString("puesto")));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                System.out.println(r.getString("id"));
+                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+            }
+            stm.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void actualizar(){
         try {
@@ -419,7 +389,9 @@ public class nuevoController {
             lista2.clear();
             while (r.next()) {
                 tabla.setItems(lista2);
-                lista2.add(new Consulta(r.getInt("id"), r.getString("Nombre"), r.getString("matricula"), r.getString("marca"), r.getString("modelo"), r.getString("color"), r.getString("puesto")));
+                lista2.add(new Consulta(r.getInt("id"), r.getString("Nombre"),
+                        r.getString("matricula"), r.getString("marca"),
+                        r.getString("modelo"), r.getString("color"), r.getString("puesto")));
                 id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
                 placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
