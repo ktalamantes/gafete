@@ -10,22 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="360.0" style="-fx-background-color: #D7E5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
-      <ImageView fx:id="agregarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="agregarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../agregar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="editarImagen" fitHeight="26.0" fitWidth="25.0" layoutX="73.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../editar.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="109.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="26.0" prefWidth="151.0" text="Agregar nuevo registro">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="108.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="26.0" prefWidth="151.0" text="Editar regitro">
+      <Button fx:id="btnUsuario" layoutX="109.0" layoutY="59.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="26.0" prefWidth="151.0" text="Agregar nuevo registro">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -37,19 +27,19 @@
       </ImageView>
       <Pane prefHeight="33.0" prefWidth="360.0" style="-fx-background-color: #C0B7FA;">
          <children>
-            <Label layoutX="159.0" layoutY="9.0" text="EDITAR">
+            <Label layoutX="159.0" layoutY="9.0" text="AGREGAR">
                <font>
                   <Font name="Berlin Sans FB" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="72.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@coche.png" />
          </image>
       </ImageView>
-      <Button layoutX="109.0" layoutY="88.0" mnemonicParsing="false" text="Agregar nuevo vehículo">
+      <Button layoutX="109.0" layoutY="114.0" mnemonicParsing="false" text="Agregar nuevo vehículo">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

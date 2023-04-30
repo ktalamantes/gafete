@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="355.0" style="-fx-background-color: #D7E5FA; -fx-border-color: #CAAEFD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="355.0" style="-fx-background-color: #D7E5FA; -fx-border-color: #CAAEFD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
       <Button layoutX="101.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: #CAAEFD;" text="correo@example.com" />
       <Button layoutX="101.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: #CAAEFD;" text="Cerrar sesión" />

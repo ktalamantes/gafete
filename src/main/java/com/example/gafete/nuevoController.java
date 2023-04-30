@@ -80,6 +80,8 @@ public class nuevoController {
     private Button btnG;
     @FXML
     private Button btnSesion;
+    @FXML
+    private Button btnCerrarLogin;
 
     @FXML private TextField txtnombre;
 
@@ -150,8 +152,8 @@ public class nuevoController {
     protected void cerrarSesion(){
         try {
             Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-            Stage cerrar = (Stage) btnCerrarSesion.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("inicioSesion.fxml"));
+            Stage cerrar = (Stage) btnCerrarLogin.getScene().getWindow();
             cerrar.close();
             Scene escena = new Scene(loader.load());
             stage.setTitle("editar");

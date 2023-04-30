@@ -46,6 +46,8 @@ public class HelloController {
     @FXML
     private Button btnG;
     @FXML
+    private Button btnUsuario;
+    @FXML
     private Button btnSalirA;
 
 
@@ -61,6 +63,8 @@ public class HelloController {
         } catch (Exception e) {
             e.printStackTrace();
         }//catch
+        Stage cerrar = (Stage) btnUsuario.getScene().getWindow();
+        cerrar.close();
     }//boton agregar
 
     @FXML
