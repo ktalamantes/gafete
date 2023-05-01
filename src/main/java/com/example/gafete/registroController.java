@@ -27,8 +27,14 @@ public class registroController {
             Statement stm = c.createStatement();
             String sql = "INSERT INTO usuarios VALUES (0, '" + txtnombre.getText() + "','" + txtcorreo.getText() + "','" +
                     txtcontraseña.getText() + "')";
-            System.out.println("DATOS INSERTADOS");
             stm.execute(sql);
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioRegistroCreado.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("");
+            stage.setScene(escena);
+            stage.showAndWait();
+            HelloApplication.setVista("inicioSesion");
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e+ "No se insertaron datos!!\n");
@@ -36,8 +42,6 @@ public class registroController {
         txtnombre.setText("");
         txtcorreo.setText("");
         txtcontraseña.setText("");
-
-        HelloApplication.setVista("login");
     }
 
     @FXML

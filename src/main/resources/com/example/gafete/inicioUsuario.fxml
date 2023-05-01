@@ -40,7 +40,7 @@
       </ImageView>
       <Separator layoutY="105.0" prefHeight="8.0" prefWidth="662.0" />
       <Separator layoutX="167.0" layoutY="-9.0" orientation="VERTICAL" prefHeight="115.0" prefWidth="8.0" />
-      <Button layoutX="517.0" layoutY="70.0" mnemonicParsing="false" text="CERRAR SESIÓN" />
+      <Button fx:id="btnCerrar" layoutX="517.0" layoutY="70.0" mnemonicParsing="false" onAction="#cerrarSesion" text="CERRAR SESIÓN" />
       <Label layoutX="287.0" layoutY="32.0" prefHeight="22.0" prefWidth="122.0" text="INICIO">
          <font>
             <Font size="35.0" />

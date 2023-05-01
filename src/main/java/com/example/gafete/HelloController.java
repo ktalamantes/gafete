@@ -52,6 +52,15 @@ public class HelloController {
 
 
     @FXML
+    private void mostrarAlertInfo(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Info");
+        alert.setContentText("Informacion sobre la aplicación");
+        alert.showAndWait();
+    }
+
+    @FXML
     protected void btnAgregar(){
         try {
             Stage stage = new Stage();//Crear una nueva ventana
@@ -94,6 +103,12 @@ public class HelloController {
             stm.execute(sql2);
             System.out.println("DATOS INSERTADOS EN persona");
             //actualizar();
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioUsuarioCreado.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("editar");
+            stage.setScene(escena);
+            stage.showAndWait();
         }catch (Exception e){
             e.printStackTrace();
         }
