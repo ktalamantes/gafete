@@ -35,12 +35,22 @@
                         <Image url="@../../../usuario1.png" />
                     </image>
                 </ImageView>
+            <ImageView fitHeight="184.0" fitWidth="910.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../tec.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="910.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../foot.jpeg" />
+               </image>
+            </ImageView>
                 <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="103.0" layoutY="97.0" onMouseClicked="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="750.2686866760254">
                     <image>
                         <Image url="@../../../menu.png" />
                     </image>
                 </ImageView>
-            <TableView fx:id="tabla" layoutX="40.0" layoutY="174.0" onMouseClicked="#dobleclick" prefHeight="431.0" prefWidth="839.0">
+            <TableView fx:id="tabla" layoutX="42.0" layoutY="175.0" onMouseClicked="#dobleclick" prefHeight="431.0" prefWidth="839.0">
               <columns>
                 <TableColumn fx:id="id" prefWidth="58.399932861328125" text="No." />
                 <TableColumn fx:id="propietario" prefWidth="201.59999084472656" text="PROPIETARIO" />
@@ -52,16 +62,6 @@
                   <TableColumn prefWidth="41.60001220703123" text="PDF" />
               </columns>
             </TableView>
-            <ImageView fitHeight="184.0" fitWidth="910.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../tec.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="74.0" fitWidth="910.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../foot.jpeg" />
-               </image>
-            </ImageView>
             </children>
         </AnchorPane>
     </center>

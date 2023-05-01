@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="355.0" style="-fx-background-color: #D7E5FA; -fx-border-color: #CAAEFD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.HelloController">
    <children>
       <Button layoutX="101.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: #CAAEFD;" text="correo@example.com" />
-      <Button fx:id="btnCerrarSesion" layoutX="101.0" layoutY="113.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: #CAAEFD;" text="Cerrar sesión" />
+      <Button layoutX="101.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: #CAAEFD;" text="Cerrar sesión" />
       <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="64.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../candado3.png" />
