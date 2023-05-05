@@ -49,7 +49,14 @@ public class personal {
     }
 
     public String toString(){
-        return this.nombre;
+        return this.puesto;
     }
+
+    public personal(String puesto) {
+        this.puesto = puesto;
+    }
+
 }
+
+
 

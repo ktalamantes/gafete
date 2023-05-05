@@ -23,8 +23,7 @@ public class loginController {
     private ImageView ojoVer;
     @FXML
     private ImageView ojoOcultar;
-    @FXML
-    private Hyperlink linkCrear;
+
 
     @FXML
     protected void btnValidar(){
@@ -33,20 +32,6 @@ public class loginController {
             try {
                 Stage stage = new Stage();//Crear una nueva ventana
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("inicio.fxml"));
-                Stage cerrar = (Stage) btnIngresarSesion.getScene().getWindow();
-                cerrar.close();
-                Scene escena = new Scene(loader.load());
-                stage.setTitle("editar");
-                stage.setScene(escena);
-                stage.showAndWait();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }//catch
-        } else if (txtCorreoSesion.getText().equals("user") && pswContraseniaSesion.getText().equals("12345") ||
-                txtContraseniaSesion.getText().equals("12345")) {
-            try {
-                Stage stage = new Stage();//Crear una nueva ventana
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("inicioUsuario.fxml"));
                 Stage cerrar = (Stage) btnIngresarSesion.getScene().getWindow();
                 cerrar.close();
                 Scene escena = new Scene(loader.load());
@@ -76,19 +61,4 @@ public class loginController {
         }
     }
 
-    @FXML
-    protected void crearCuenta(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("registrarUsuario.fxml"));
-            Stage cerrar = (Stage) linkCrear.getScene().getWindow();
-            cerrar.close();
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }//catch
-    }
 }
