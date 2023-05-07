@@ -70,6 +70,8 @@ public class HelloController  {
         try {
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarUsuario.fxml"));
+            Stage cerrar = (Stage) btnUsuario.getScene().getWindow();
+            cerrar.close();
             Scene escena = new Scene(loader.load());
             stage.setTitle("editar");
             stage.setScene(escena);
