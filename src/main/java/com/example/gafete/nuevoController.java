@@ -68,7 +68,7 @@ public class nuevoController implements Initializable {
 
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
-    ObservableList<ConsultaDB> lista1 = FXCollections.observableArrayList();
+
 
 
 
@@ -127,13 +127,6 @@ public class nuevoController implements Initializable {
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
 
 
-/*
-    public void initialize() {
-        actualizar();
-        actuaRegistros();
-    }
-
- */
 
 
     //------------------------BASE DE DATOS--------------------------------4
@@ -176,8 +169,8 @@ public class nuevoController implements Initializable {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            //String sql = "SELECT * FROM registros";
-            String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
+            String sql = "SELECT * FROM registros";
+            //String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
             while (r.next()){
@@ -203,8 +196,9 @@ public class nuevoController implements Initializable {
             e.printStackTrace();
         }
         //tabla.refresh();
-
     }
+
+
 
     //------------------------FIN BASE DE DATOS--------------------------------
 
@@ -213,7 +207,7 @@ public class nuevoController implements Initializable {
 
     //EDITAR DANDO DOBLE CLICK
     public void dobleclick(MouseEvent mevt){
-        if(mevt.getClickCount()>1){
+        if(mevt.getClickCount()>2){
             if(tablita.getSelectionModel().getSelectedItem()!=null){
                 try{
                     Stage stage = new Stage();
@@ -222,13 +216,14 @@ public class nuevoController implements Initializable {
                     stage.setScene(scene);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     editarController ec = loader.getController();
-                    ConsultaDB cdb = (ConsultaDB) tablita.getSelectionModel().getSelectedItem();
+                    Consulta cdb = (Consulta) tablita.getSelectionModel().getSelectedItem();
                     ec.setId(cdb.getId());
                     try{
                         Connection c = Enlace.getConexion();
                         Statement stm = c.createStatement();
                         String sql = "SELECT * FROM registros WHERE id = '"+cdb.getId()+"';";
                         ResultSet r = stm.executeQuery(sql);
+
                         while (r.next()){
 
                             prop.setText(r.getString("prop"));

@@ -13,7 +13,7 @@
             <Image url="@marca-de-verificacion.png" />
          </image>
       </ImageView>
-      <Label layoutX="115.0" layoutY="27.0" text="¡Registro exitoso!" />
+      <Label layoutX="96.0" layoutY="27.0" text="¡Se agrego correctamente!" />
       <Button fx:id="btnRegistroU" layoutX="125.0" layoutY="51.0" mnemonicParsing="false" onAction="#btnAceptarR" text="ACEPTAR" />
    </children>
 </AnchorPane>

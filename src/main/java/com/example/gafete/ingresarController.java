@@ -49,24 +49,30 @@ public class ingresarController implements Initializable {
 
     @FXML
     protected void agregarBtn(){
+        String qs = "";
         try{
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "INSERT INTO automovil VALUES (0, '" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
+            /*
+            String sql = "INSERT INTO registros VALUES (0, '" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
                     txtModeloA.getText() + "','" + txtColor.getText() + "')";
-            System.out.println("DATOS INSERTADOS EN automovil");
             stm.execute(sql);
             String sql2 = "INSERT INTO persona VALUES (0, '" + txtNombreA.getText()+ "','" +
                     comPersona.getSelectionModel().getSelectedItem().toString() + "')";
             stm.execute(sql2);
+             */
+            String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
+                    txtModeloA.getText() + "','" + txtColor.getText() + "','" + comPersona.getSelectionModel().getSelectedItem().toString() + "')";
+            stm.execute(sql);
             System.out.println("DATOS INSERTADOS EN persona");
-            //actualizar();
             Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioUsuarioCreado.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioRegistroCreado.fxml"));
             Scene escena = new Scene(loader.load());
             stage.setTitle("editar");
             stage.setScene(escena);
             stage.showAndWait();
+            //actualizar();
+
         }catch (Exception e){
             e.printStackTrace();
         }

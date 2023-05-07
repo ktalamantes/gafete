@@ -1,10 +1,14 @@
 package com.example.gafete;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class alertasController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class alertasController implements Initializable {
 
     @FXML
     private Button btnRegistroU;
@@ -16,4 +20,8 @@ public class alertasController {
         s.close();
     }//boton salirAgregar
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
