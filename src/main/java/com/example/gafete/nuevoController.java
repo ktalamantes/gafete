@@ -137,8 +137,8 @@ public class nuevoController implements Initializable {
         try {
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            //String sql = "SELECT * FROM registros";
-            String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
+            String sql = "SELECT * FROM registros";
+            //String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
             ResultSet r = stm.executeQuery(sql);
             lista2.clear();
             while (r.next()){
@@ -160,6 +160,7 @@ public class nuevoController implements Initializable {
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
             }
             stm.close();
+            tablita.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -192,6 +193,7 @@ public class nuevoController implements Initializable {
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
             }
             stm.close();
+            tablita.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -276,5 +278,6 @@ public class nuevoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         actualizar();
+        refrescar();
     }
 }

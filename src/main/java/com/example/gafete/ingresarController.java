@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class ingresarController implements Initializable {
@@ -45,11 +47,15 @@ public class ingresarController implements Initializable {
     private Button btnSalirA;
     @FXML
     private ComboBox<personal> comPersona;
+    @FXML
+    private DatePicker fechaV;
+    @FXML
+    private DatePicker fechaE;
     private ObservableList<personal> lista;
 
     @FXML
     protected void agregarBtn(){
-        String qs = "";
+        LocalDateTime diaActual = LocalDateTime.now();
         try{
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
@@ -61,10 +67,16 @@ public class ingresarController implements Initializable {
                     comPersona.getSelectionModel().getSelectedItem().toString() + "')";
             stm.execute(sql2);
              */
-            String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" + txtMarcaA.getText() + "','" +
-                    txtModeloA.getText() + "','" + txtColor.getText() + "','" + comPersona.getSelectionModel().getSelectedItem().toString() + "')";
+            String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" +
+                    txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
+                    comPersona.getSelectionModel().getSelectedItem().toString() + "')";
             stm.execute(sql);
+            //String sql1 = "INSERT INTO gafetes VALUES (0, 1'" + diaActual + "','" + fechaV.getValue() + "')";
+            String sql1 = "INSERT INTO gafetes (id, id_automovil, fecha_emision, fecha_vencimiento) VALUES (0, 1'" +
+                    fechaE.getValue() + "','" + fechaV.getValue() + "')";
+            stm.execute(sql1);
             System.out.println("DATOS INSERTADOS EN persona");
+
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioRegistroCreado.fxml"));
             Scene escena = new Scene(loader.load());
@@ -73,15 +85,18 @@ public class ingresarController implements Initializable {
             stage.showAndWait();
             //actualizar();
 
+
         }catch (Exception e){
             e.printStackTrace();
         }
+        /*
         txtPersonaA.setText("");
-        txtColor.setText("");
-        txtNombreA.setText("");
-        txtModeloA.setText("");
-        txtMarcaA.setText("");
-        txtMatriculaA.setText("");
+            txtColor.setText("");
+            txtNombreA.setText("");
+            txtModeloA.setText("");
+            txtMarcaA.setText("");
+            txtMatriculaA.setText("");
+         */
         Stage cerrar = (Stage) btnG.getScene().getWindow();
         cerrar.close();
     }
