@@ -64,6 +64,7 @@ public class nuevoController implements Initializable {
     @FXML private TextField buscar;
     @FXML
     private Button btnCerrarLogin;
+    private Consulta idP;
 
 
 
@@ -131,7 +132,28 @@ public class nuevoController implements Initializable {
 
     //------------------------BASE DE DATOS--------------------------------4
 
+    @FXML
+    public void siguientePDF(){
+        tablita.getSelectionModel().select(1);
+    }
 
+    /*
+    //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
+    int idSolicitantes;
+    @FXML
+    public void ClickTablaSolicitantes(MouseEvent evt){
+        if(evt.getClickCount() >= 1){
+                datos_usuario p = (datos_usuario) tabla.getSelectionModel().getSelectedItem();
+                temporalSolicitantes = p;
+                idSolicitantes = p.getId();
+            System.out.println("Se ha seleccionado el solicitante");
+            System.out.println("ID: " + p.getId());
+            continuar.setDisable(false);
+
+        }
+
+    }
+     */
     @FXML
     private void refrescar(){
         try {
