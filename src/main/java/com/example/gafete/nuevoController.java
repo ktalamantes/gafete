@@ -154,10 +154,10 @@ public class nuevoController implements Initializable {
         Document documento = new Document();
         try{
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/pdf.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\usuarios2.pdf"));
             documento.open();
 
-            PdfPTable tabla = new PdfPTable(6);
+            PdfPTable tabla = new PdfPTable(7);
             tabla.addCell("id");
             tabla.addCell("nombre");
             tabla.addCell("matricula");
@@ -169,9 +169,19 @@ public class nuevoController implements Initializable {
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
-                String sql = "SELECT * FROM registros";
-                stm.execute(sql);
+                String sql = "SELECT * FROM registros WHERE id = '1'";
                 ResultSet r = stm.executeQuery(sql);
+               while (r.next()){
+                   tabla.addCell(r.getString(1));
+                   tabla.addCell(r.getString(2));
+                   tabla.addCell(r.getString(3));
+                   tabla.addCell(r.getString(4));
+                   tabla.addCell(r.getString(5));
+                   tabla.addCell(r.getString(6));
+                   tabla.addCell(r.getString(7));
+               }
+               documento.add(tabla);
+                System.out.println("Documento creado. ");
 
             }catch (Exception e){
                 e.printStackTrace();
