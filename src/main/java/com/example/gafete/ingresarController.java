@@ -72,7 +72,8 @@ public class ingresarController implements Initializable {
                     comPersona.getSelectionModel().getSelectedItem().toString() + "')";
             stm.execute(sql);
             //String sql1 = "INSERT INTO gafetes VALUES (0, 1'" + diaActual + "','" + fechaV.getValue() + "')";
-            String sql1 = "INSERT INTO gafetes VALUES (0, 3'" + fechaV.getValue() + "')";
+            //String sql1 = "INSERT INTO gafetes (id_automovil, fecha_vencimimiento)VALUES (0,'" + fechaV.getValue() + "')";
+            String sql1 = "INSERT INTO gafetes VALUES (0, 3, null,'" + fechaV.getValue() + "')";
             stm.execute(sql1);
             System.out.println("DATOS INSERTADOS EN persona");
 

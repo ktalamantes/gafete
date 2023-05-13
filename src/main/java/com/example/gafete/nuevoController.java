@@ -2,25 +2,28 @@ package com.example.gafete;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfPTable;
 
 public class nuevoController implements Initializable {
     @FXML
@@ -63,8 +66,17 @@ public class nuevoController implements Initializable {
     @FXML private TextField per;
     @FXML private TextField buscar;
     @FXML
+    private Button siguiente;
+    @FXML
+    private Button genPdf;
+    @FXML
     private Button btnCerrarLogin;
+    @FXML
+    private Tab tabEditar;
+    @FXML
+    private TabPane tabGeneral;
     private Consulta idP;
+    private Consulta tmpConsulta;
 
 
 
@@ -133,27 +145,58 @@ public class nuevoController implements Initializable {
     //------------------------BASE DE DATOS--------------------------------4
 
     @FXML
-    public void siguientePDF(){
-        tablita.getSelectionModel().select(1);
+    public void siguienteEditar(){
+        tabGeneral.getSelectionModel().select(1);
+    }
+    @FXML
+    public void sigueintePDF(){
+        //tabGeneral.getSelectionModel().select(2);
+        Document documento = new Document();
+        try{
+            String ruta = System.getProperty("user.home");
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/pdf.pdf"));
+            documento.open();
+
+            PdfPTable tabla = new PdfPTable(6);
+            tabla.addCell("id");
+            tabla.addCell("nombre");
+            tabla.addCell("matricula");
+            tabla.addCell("marca");
+            tabla.addCell("modelo");
+            tabla.addCell("color");
+            tabla.addCell("persona");
+
+            try {
+                Connection c = Enlace.getConexion();
+                Statement stm = c.createStatement();
+                String sql = "SELECT * FROM registros";
+                stm.execute(sql);
+                ResultSet r = stm.executeQuery(sql);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    /*
     //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
     int idSolicitantes;
     @FXML
-    public void ClickTablaSolicitantes(MouseEvent evt){
-        if(evt.getClickCount() >= 1){
-                datos_usuario p = (datos_usuario) tabla.getSelectionModel().getSelectedItem();
-                temporalSolicitantes = p;
-                idSolicitantes = p.getId();
+    public void ClickTablaSolicitantes(MouseEvent evt) {
+        if (evt.getClickCount() >= 1) {
+            idP = (Consulta) tablita.getSelectionModel().getSelectedItem();
+            tmpConsulta = idP;
+            idSolicitantes = idP.getId();
             System.out.println("Se ha seleccionado el solicitante");
-            System.out.println("ID: " + p.getId());
-            continuar.setDisable(false);
-
+            System.out.println("ID: " + idP.getId());
+            genPdf.setDisable(false);
+            siguiente.setDisable(false);
         }
-
     }
-     */
+
+
     @FXML
     private void refrescar(){
         try {

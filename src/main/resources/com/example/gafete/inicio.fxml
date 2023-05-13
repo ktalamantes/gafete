@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="INICIO">
          <content>
@@ -40,7 +40,7 @@
                         <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#dobleclick" prefHeight="330.0" prefWidth="1102.0">
+                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="330.0" prefWidth="1102.0">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="36.79998779296875" text="No." />
                         <TableColumn fx:id="propietario" prefWidth="256.7999687194824" text="PROPIETARIO" />
@@ -66,10 +66,16 @@
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="1020.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguientePDF" text="GENERAR PDF" />
+                  <Button fx:id="siguiente" disable="true" layoutX="1020.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
+                  <Button fx:id="genPdf" disable="true" layoutX="939.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
                </children>
             </AnchorPane>
          </content></Tab>
-    <Tab text="EDITAR" />
+    <Tab fx:id="tabEditar" text="EDITAR" />
+      <Tab text="PDF">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
   </tabs>
 </TabPane>
