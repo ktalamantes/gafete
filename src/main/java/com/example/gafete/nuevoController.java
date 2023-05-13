@@ -2,6 +2,7 @@ package com.example.gafete;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -138,6 +139,16 @@ public class nuevoController implements Initializable {
     }
 
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
+
+    @FXML
+    public void editarUsuario (ActionEvent evt) {
+    }
+
+    @FXML
+    protected void btnSalirEditar(){
+        tabGeneral.getSelectionModel().select(0);
+    }//boton salir Editar
+
 
 
 
@@ -355,4 +366,5 @@ public class nuevoController implements Initializable {
         actualizar();
         refrescar();
     }
+
 }

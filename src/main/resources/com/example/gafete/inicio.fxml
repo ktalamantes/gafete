@@ -95,8 +95,8 @@
                         <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
                         <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
                         <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
-                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" text="Guardar" />
-                        <Button layoutX="499.0" layoutY="268.0" mnemonicParsing="false" text="Cancelar" />
+                        <Button fx:id="eButton" layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" text="Guardar" />
+                        <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" text="Cancelar" />
                         <ComboBox layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
                         <TextField layoutX="410.0" layoutY="169.0" />
                         <TextField layoutX="98.0" layoutY="169.0" />
