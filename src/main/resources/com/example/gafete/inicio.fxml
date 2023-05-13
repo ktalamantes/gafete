@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -88,6 +89,19 @@
                               </Label>
                            </children>
                         </Pane>
+                        <Label layoutX="43.0" layoutY="76.0" text="Personas:" />
+                        <Label layoutX="54.0" layoutY="128.0" text="Prpopietario:" />
+                        <Label layoutX="54.0" layoutY="173.0" text="Marca:" />
+                        <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
+                        <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
+                        <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
+                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" text="Guardar" />
+                        <Button layoutX="499.0" layoutY="268.0" mnemonicParsing="false" text="Cancelar" />
+                        <ComboBox layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
+                        <TextField layoutX="410.0" layoutY="169.0" />
+                        <TextField layoutX="98.0" layoutY="169.0" />
+                        <TextField layoutX="115.0" layoutY="215.0" />
+                        <TextField layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
                      </children>
                   </AnchorPane>
                </children>
