@@ -168,35 +168,31 @@ public class nuevoController implements Initializable {
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\usuarios2.pdf"));
             documento.open();
 
-            PdfPTable tabla = new PdfPTable(7);
-            tabla.addCell("id");
-            tabla.addCell("nombre");
+            PdfPTable tabla = new PdfPTable(3);
+            //tabla.getHorizontalAlignment();
             tabla.addCell("matricula");
             tabla.addCell("marca");
             tabla.addCell("modelo");
-            tabla.addCell("color");
-            tabla.addCell("persona");
-
+            tabla.setHorizontalAlignment(1);
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
-                String sql = "SELECT * FROM registros WHERE id = '1'";
+                String sql = "SELECT matricula, marca, modelo FROM registros WHERE id ='1'";
                 ResultSet r = stm.executeQuery(sql);
-               while (r.next()){
-                   tabla.addCell(r.getString(1));
-                   tabla.addCell(r.getString(2));
-                   tabla.addCell(r.getString(3));
-                   tabla.addCell(r.getString(4));
-                   tabla.addCell(r.getString(5));
-                   tabla.addCell(r.getString(6));
-                   tabla.addCell(r.getString(7));
-               }
-               documento.add(tabla);
-                System.out.println("Documento creado. ");
+                if(r.next()){
+                    do{
+                        tabla.addCell(r.getString(1));
+                        tabla.addCell(r.getString(2));
+                        tabla.addCell(r.getString(3));
+                    }while (r.next());
+                    documento.add(tabla);
+                }
 
             }catch (Exception e){
                 e.printStackTrace();
             }
+            documento.close();
+            System.out.println("Documento creado. ");
         }catch (Exception e){
             e.printStackTrace();
         }
