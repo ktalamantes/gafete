@@ -78,13 +78,25 @@ public class nuevoController implements Initializable {
     @FXML
     private Button btnEliminar;
     @FXML
+    private Button btnFecha;
+    @FXML
     private Tab tabEditar;
     @FXML
     private TabPane tabGeneral;
+    @FXML
+    private TextField txtEPropietario;
+    @FXML
+    private TextField txtEMarca;
+    @FXML
+    private TextField txtEModelo;
+    @FXML
+    private TextField txtEPlaca;
+    @FXML
+    private ComboBox<personal> txtEPersona;
     private Consulta idP;
     private Consulta tmpConsulta;
 
-
+    private ObservableList<personal> lista;
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
@@ -124,25 +136,6 @@ public class nuevoController implements Initializable {
         }//catch
     }//Imagen cuenta
 
-    //-----------BOTON QUE AGREGA USUARIO------------
-
-
-    @FXML
-    protected void cerrarSesion(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("inicioSesion.fxml"));
-            Stage cerrar = (Stage) btnCerrarLogin.getScene().getWindow();
-            cerrar.close();
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }//catch
-    }
-
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
 
     @FXML
@@ -152,6 +145,7 @@ public class nuevoController implements Initializable {
     @FXML
     protected void btnSalirEditar(){
         tabGeneral.getSelectionModel().select(0);
+
     }//boton salir Editar
 
 
@@ -163,6 +157,24 @@ public class nuevoController implements Initializable {
     @FXML
     public void siguienteEditar(){
         tabGeneral.getSelectionModel().select(1);
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM registros WHERE id= " + idSolicitantes;
+            stm.executeQuery(sql);
+            txtEPropietario.setText(idP.getNombre());
+            txtEMarca.setText(idP.getMarca());
+            txtEModelo.setText(idP.getModelo());
+            txtEPlaca.setText(idP.getMatricula());
+            txtEPersona.getSelectionModel().getSelectedItem();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void agregarFecha(){
+        tabGeneral.getSelectionModel().select(2);
     }
     @FXML
     public void sigueintePDF(){
@@ -208,6 +220,7 @@ public class nuevoController implements Initializable {
     public void cerrarSql(){
         try {
             Connection c = Enlace.closeConexion();
+            System.exit(0);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -242,6 +255,7 @@ public class nuevoController implements Initializable {
             genPdf.setDisable(false);
             siguiente.setDisable(false);
             btnEliminar.setDisable(false);
+            btnFecha.setDisable(false);
         }
     }
 
@@ -273,8 +287,8 @@ public class nuevoController implements Initializable {
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
             }
-            stm.close();
-            tablita.refresh();
+            stm.execute(sql);
+            //tablita.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -391,6 +405,13 @@ public class nuevoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lista= FXCollections.observableArrayList();
+        lista.add(new personal("Maestro"));
+        lista.add(new personal("Alumno"));
+        lista.add(new personal("Cafeteria"));
+        lista.add(new personal("Admnistrativo"));
+        lista.add(new personal("Gastronomia"));
+        txtEPersona.setItems(lista);
         actualizar();
         refrescar();
     }

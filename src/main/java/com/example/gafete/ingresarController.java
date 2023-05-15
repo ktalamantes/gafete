@@ -70,11 +70,12 @@ public class ingresarController implements Initializable {
             String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" +
                     txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
                     comPersona.getSelectionModel().getSelectedItem().toString() + "')";
-            stm.execute(sql);
+            stm.executeUpdate(sql);
             //String sql1 = "INSERT INTO gafetes VALUES (0, 1'" + diaActual + "','" + fechaV.getValue() + "')";
             //String sql1 = "INSERT INTO gafetes (id_automovil, fecha_vencimimiento)VALUES (0,'" + fechaV.getValue() + "')";
             String sql1 = "INSERT INTO gafetes VALUES (0, 3, null,'" + fechaV.getValue() + "')";
-            stm.execute(sql1);
+            //stm.execute(sql1);
+            stm.executeUpdate(sql1);
             System.out.println("DATOS INSERTADOS EN persona");
 
             Stage stage = new Stage();//Crear una nueva ventana
