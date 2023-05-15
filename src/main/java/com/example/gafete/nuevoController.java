@@ -202,21 +202,45 @@ public class nuevoController implements Initializable {
             iMaestro.scaleToFit(400, 500);
             iMaestro.setAlignment(Chunk.ALIGN_CENTER);
 
+            Paragraph matricula = new Paragraph();
+            matricula.setAlignment(Paragraph.PTABLE);
+            matricula.add(idP.getMatricula());
+            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
+
+            Paragraph marca = new Paragraph();
+            matricula.setAlignment(Paragraph.ALIGN_TOP);
+            matricula.add("\n\n"+idP.getMarca()+"/");
+            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
+
+            Paragraph modelo = new Paragraph();
+            matricula.setAlignment(Paragraph.ALIGN_CENTER);
+            matricula.add(idP.getModelo());
+            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
+
+
             if(idP.getPuesto().equals("Alumno")){
                 documento.open();
                 documento.add(card);
+                documento.add(matricula);
+                documento.add(marca);
+                documento.add(modelo);
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
                 documento.add(iMaestro);
+                documento.add(matricula);
+                documento.add(marca);
+                documento.add(modelo);
             }
 
 
+            /*
             PdfPTable tabla = new PdfPTable(3);
             //tabla.getHorizontalAlignment();
             tabla.addCell("");
             tabla.addCell("");
             tabla.addCell("");
             //tabla.setHorizontalAlignment(1);
+             */
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
@@ -224,14 +248,14 @@ public class nuevoController implements Initializable {
                 ResultSet r = stm.executeQuery(sql);
                 if(r.next()){
                     do{
-                        tabla.addCell(r.getString(1));
-                        tabla.addCell(r.getString(2));
-                        tabla.addCell(r.getString(3));
+                        //tabla.addCell(r.getString(1));
+                        //tabla.addCell(r.getString(2));
+                        //tabla.addCell(r.getString(3));
                     }while (r.next());
-                    documento.add(tabla);
+                    //documento.add(tabla);
                 }
 
-            }catch (DocumentException | SQLException e){
+            }catch (SQLException e){
                 //e.printStackTrace();
                 System.out.println("Error en la conexión " + e);
             }
