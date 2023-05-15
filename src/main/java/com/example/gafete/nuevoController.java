@@ -17,10 +17,13 @@ import javafx.scene.layout.Border;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -28,6 +31,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Font;
 
 public class nuevoController implements Initializable {
     @FXML
@@ -184,7 +194,22 @@ public class nuevoController implements Initializable {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +
                     idP.getMatricula() + ".pdf"));
-            documento.open();
+            Image card = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\ALUMNO.jpg");
+            card.scaleToFit(400, 500);
+            card.setAlignment(Chunk.ALIGN_CENTER);
+
+            Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\MAESTRO.jpg");
+            iMaestro.scaleToFit(400, 500);
+            iMaestro.setAlignment(Chunk.ALIGN_CENTER);
+
+            if(idP.getPuesto().equals("Alumno")){
+                documento.open();
+                documento.add(card);
+            } else if (idP.getPuesto().equals("Maestro")) {
+                documento.open();
+                documento.add(iMaestro);
+            }
+
 
             PdfPTable tabla = new PdfPTable(3);
             //tabla.getHorizontalAlignment();
@@ -206,13 +231,18 @@ public class nuevoController implements Initializable {
                     documento.add(tabla);
                 }
 
-            }catch (Exception e){
-                e.printStackTrace();
+            }catch (DocumentException | SQLException e){
+                //e.printStackTrace();
+                System.out.println("Error en la conexión " + e);
             }
             documento.close();
             System.out.println("Documento creado. ");
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (DocumentException | FileNotFoundException e){
+            //e.printStackTrace();
+            System.out.println("Error en PDF " + e);
+        }catch (IOException e){
+            //e.printStackTrace();
+            System.out.println("Error en la imagen " + e);
         }
     }
 
