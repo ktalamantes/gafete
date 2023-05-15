@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="INICIO">
          <content>
@@ -62,15 +62,17 @@
                      </image>
                   </ImageView>
                   <Button layoutX="722.0" layoutY="134.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
-                  <Button fx:id="btnCerrarLogin" layoutX="822.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSesion" text="CERRAR SESIÓN" />
+                  <Button fx:id="btnCerrarLogin" layoutX="822.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="78.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="86.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="siguiente" disable="true" layoutX="1020.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
-                  <Button fx:id="genPdf" disable="true" layoutX="939.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="siguiente" disable="true" layoutX="990.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
+                  <Button fx:id="genPdf" disable="true" layoutX="835.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="btnEliminar" disable="true" layoutX="1059.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
+                  <Button fx:id="btnFecha" disable="true" layoutX="887.0" layoutY="555.0" mnemonicParsing="false" onAction="#agregarFecha" text="VENCIMIENTO" />
                </children>
             </AnchorPane>
          </content></Tab>
@@ -97,11 +99,11 @@
                         <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
                         <Button fx:id="eButton" layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" text="Guardar" />
                         <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" text="Cancelar" />
-                        <ComboBox layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
-                        <TextField layoutX="410.0" layoutY="169.0" />
-                        <TextField layoutX="98.0" layoutY="169.0" />
-                        <TextField layoutX="115.0" layoutY="215.0" />
-                        <TextField layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
+                        <ComboBox fx:id="txtEPersona" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
+                        <TextField fx:id="txtEPlaca" layoutX="410.0" layoutY="169.0" />
+                        <TextField fx:id="txtEMarca" layoutX="98.0" layoutY="169.0" />
+                        <TextField fx:id="txtEModelo" layoutX="115.0" layoutY="215.0" />
+                        <TextField fx:id="txtEPropietario" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
                      </children>
                   </AnchorPane>
                   <ImageView fitHeight="73.0" fitWidth="996.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="103.0">
@@ -123,7 +125,7 @@
                </children>
             </AnchorPane>
          </content></Tab>
-      <Tab text="PDF">
+      <Tab text="VENCIMIENTO">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>

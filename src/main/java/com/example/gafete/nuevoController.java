@@ -1,5 +1,7 @@
 package com.example.gafete;
 
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,13 +13,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -25,6 +31,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Font;
 
 public class nuevoController implements Initializable {
     @FXML
@@ -73,13 +86,27 @@ public class nuevoController implements Initializable {
     @FXML
     private Button btnCerrarLogin;
     @FXML
+    private Button btnEliminar;
+    @FXML
+    private Button btnFecha;
+    @FXML
     private Tab tabEditar;
     @FXML
     private TabPane tabGeneral;
+    @FXML
+    private TextField txtEPropietario;
+    @FXML
+    private TextField txtEMarca;
+    @FXML
+    private TextField txtEModelo;
+    @FXML
+    private TextField txtEPlaca;
+    @FXML
+    private ComboBox<personal> txtEPersona;
     private Consulta idP;
     private Consulta tmpConsulta;
 
-
+    private ObservableList<personal> lista;
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
 
@@ -119,25 +146,6 @@ public class nuevoController implements Initializable {
         }//catch
     }//Imagen cuenta
 
-    //-----------BOTON QUE AGREGA USUARIO------------
-
-
-    @FXML
-    protected void cerrarSesion(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("inicioSesion.fxml"));
-            Stage cerrar = (Stage) btnCerrarLogin.getScene().getWindow();
-            cerrar.close();
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }//catch
-    }
-
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
 
     @FXML
@@ -147,6 +155,7 @@ public class nuevoController implements Initializable {
     @FXML
     protected void btnSalirEditar(){
         tabGeneral.getSelectionModel().select(0);
+
     }//boton salir Editar
 
 
@@ -158,6 +167,24 @@ public class nuevoController implements Initializable {
     @FXML
     public void siguienteEditar(){
         tabGeneral.getSelectionModel().select(1);
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM registros WHERE id= " + idSolicitantes;
+            stm.executeQuery(sql);
+            txtEPropietario.setText(idP.getNombre());
+            txtEMarca.setText(idP.getMarca());
+            txtEModelo.setText(idP.getModelo());
+            txtEPlaca.setText(idP.getMatricula());
+            txtEPersona.getSelectionModel().getSelectedItem();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void agregarFecha(){
+        tabGeneral.getSelectionModel().select(2);
     }
     @FXML
     public void sigueintePDF(){
@@ -165,38 +192,81 @@ public class nuevoController implements Initializable {
         Document documento = new Document();
         try{
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\usuarios2.pdf"));
-            documento.open();
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +
+                    idP.getMatricula() + ".pdf"));
+            Image card = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\ALUMNO.jpg");
+            card.scaleToFit(400, 500);
+            card.setAlignment(Chunk.ALIGN_CENTER);
 
-            PdfPTable tabla = new PdfPTable(7);
-            tabla.addCell("id");
-            tabla.addCell("nombre");
-            tabla.addCell("matricula");
-            tabla.addCell("marca");
-            tabla.addCell("modelo");
-            tabla.addCell("color");
-            tabla.addCell("persona");
+            Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\MAESTRO.jpg");
+            iMaestro.scaleToFit(400, 500);
+            iMaestro.setAlignment(Chunk.ALIGN_CENTER);
 
+            if(idP.getPuesto().equals("Alumno")){
+                documento.open();
+                documento.add(card);
+            } else if (idP.getPuesto().equals("Maestro")) {
+                documento.open();
+                documento.add(iMaestro);
+            }
+
+
+            PdfPTable tabla = new PdfPTable(3);
+            //tabla.getHorizontalAlignment();
+            tabla.addCell("");
+            tabla.addCell("");
+            tabla.addCell("");
+            //tabla.setHorizontalAlignment(1);
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
-                String sql = "SELECT * FROM registros WHERE id = '1'";
+                String sql = "SELECT matricula, marca, modelo FROM registros WHERE id =" + idSolicitantes;
                 ResultSet r = stm.executeQuery(sql);
-               while (r.next()){
-                   tabla.addCell(r.getString(1));
-                   tabla.addCell(r.getString(2));
-                   tabla.addCell(r.getString(3));
-                   tabla.addCell(r.getString(4));
-                   tabla.addCell(r.getString(5));
-                   tabla.addCell(r.getString(6));
-                   tabla.addCell(r.getString(7));
-               }
-               documento.add(tabla);
-                System.out.println("Documento creado. ");
+                if(r.next()){
+                    do{
+                        tabla.addCell(r.getString(1));
+                        tabla.addCell(r.getString(2));
+                        tabla.addCell(r.getString(3));
+                    }while (r.next());
+                    documento.add(tabla);
+                }
 
-            }catch (Exception e){
-                e.printStackTrace();
+            }catch (DocumentException | SQLException e){
+                //e.printStackTrace();
+                System.out.println("Error en la conexión " + e);
             }
+            documento.close();
+            System.out.println("Documento creado. ");
+        }catch (DocumentException | FileNotFoundException e){
+            //e.printStackTrace();
+            System.out.println("Error en PDF " + e);
+        }catch (IOException e){
+            //e.printStackTrace();
+            System.out.println("Error en la imagen " + e);
+        }
+    }
+
+    @FXML
+    public void cerrarSql(){
+        try {
+            Connection c = Enlace.closeConexion();
+            System.exit(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void eliminarPersona(ActionEvent evt){
+        try{
+            if(idP != null){
+                lista2.remove(idP);
+                Connection c = Enlace.getConexion();
+                Statement stm = c.createStatement();
+                String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
+                stm.executeLargeUpdate(sql);
+            }
+            System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -214,6 +284,8 @@ public class nuevoController implements Initializable {
             System.out.println("ID: " + idP.getId());
             genPdf.setDisable(false);
             siguiente.setDisable(false);
+            btnEliminar.setDisable(false);
+            btnFecha.setDisable(false);
         }
     }
 
@@ -245,8 +317,8 @@ public class nuevoController implements Initializable {
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
             }
-            stm.close();
-            tablita.refresh();
+            stm.execute(sql);
+            //tablita.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -363,6 +435,13 @@ public class nuevoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lista= FXCollections.observableArrayList();
+        lista.add(new personal("Maestro"));
+        lista.add(new personal("Alumno"));
+        lista.add(new personal("Cafeteria"));
+        lista.add(new personal("Admnistrativo"));
+        lista.add(new personal("Gastronomia"));
+        txtEPersona.setItems(lista);
         actualizar();
         refrescar();
     }
