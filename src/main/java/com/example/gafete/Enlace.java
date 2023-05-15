@@ -3,6 +3,7 @@ package com.example.gafete;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class Enlace {
@@ -19,6 +20,18 @@ public class Enlace {
         }
         return c;
     }
+
+    public static Connection closeConexion(){
+        try {
+            c.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Se ha cerrado la sesion. ");
+        }
+        return c;
+    }
+
+
 
 
 

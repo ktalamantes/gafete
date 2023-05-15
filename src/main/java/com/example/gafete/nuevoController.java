@@ -1,5 +1,7 @@
 package com.example.gafete;
 
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -72,6 +75,8 @@ public class nuevoController implements Initializable {
     private Button genPdf;
     @FXML
     private Button btnCerrarLogin;
+    @FXML
+    private Button btnEliminar;
     @FXML
     private Tab tabEditar;
     @FXML
@@ -165,19 +170,20 @@ public class nuevoController implements Initializable {
         Document documento = new Document();
         try{
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\usuarios2.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +
+                    idP.getMatricula() + ".pdf"));
             documento.open();
 
             PdfPTable tabla = new PdfPTable(3);
             //tabla.getHorizontalAlignment();
-            tabla.addCell("matricula");
-            tabla.addCell("marca");
-            tabla.addCell("modelo");
-            tabla.setHorizontalAlignment(1);
+            tabla.addCell("");
+            tabla.addCell("");
+            tabla.addCell("");
+            //tabla.setHorizontalAlignment(1);
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
-                String sql = "SELECT matricula, marca, modelo FROM registros WHERE id ='1'";
+                String sql = "SELECT matricula, marca, modelo FROM registros WHERE id =" + idSolicitantes;
                 ResultSet r = stm.executeQuery(sql);
                 if(r.next()){
                     do{
@@ -198,6 +204,31 @@ public class nuevoController implements Initializable {
         }
     }
 
+    @FXML
+    public void cerrarSql(){
+        try {
+            Connection c = Enlace.closeConexion();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void eliminarPersona(ActionEvent evt){
+        try{
+            if(idP != null){
+                lista2.remove(idP);
+                Connection c = Enlace.getConexion();
+                Statement stm = c.createStatement();
+                String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
+                stm.executeLargeUpdate(sql);
+            }
+            System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
     int idSolicitantes;
     @FXML
@@ -210,6 +241,7 @@ public class nuevoController implements Initializable {
             System.out.println("ID: " + idP.getId());
             genPdf.setDisable(false);
             siguiente.setDisable(false);
+            btnEliminar.setDisable(false);
         }
     }
 

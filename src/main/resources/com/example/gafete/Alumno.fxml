@@ -6,50 +6,40 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="-1.0" prefHeight="400.0" prefWidth="606.0" style="-fx-background-color: RED;">
+      <AnchorPane layoutX="-1.0" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #EB1D0F;">
          <children>
-            <TextField layoutX="328.0" layoutY="209.0" prefHeight="26.0" prefWidth="265.0" />
-            <TextField layoutX="329.0" layoutY="282.0" prefHeight="26.0" prefWidth="265.0" />
-            <Label layoutX="373.0" layoutY="154.0" text="Vehículo Autorizado" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f0f2f4" height="126.0" layoutX="37.0" layoutY="118.0" stroke="BLACK" strokeType="INSIDE" width="126.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="233.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
+            <TextField layoutX="201.0" layoutY="154.0" prefHeight="26.0" prefWidth="265.0" />
+            <TextField layoutX="202.0" layoutY="208.0" prefHeight="26.0" prefWidth="265.0" />
+            <Label layoutX="233.0" layoutY="97.0" text="Vehículo Autorizado" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="437.0" layoutY="254.0" text="Placas" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="393.0" layoutY="324.0" text="Modelo ó Marca" textFill="WHITE">
+            <Label layoutX="57.0" layoutY="53.0" prefHeight="22.0" prefWidth="90.0" text="ALUMNO" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="19.0" prefHeight="18.0" prefWidth="154.0" text="        Alumno" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="88.0" fitWidth="154.0" layoutX="239.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@tecnologicoJalisco-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="126.0" fitWidth="154.0" layoutX="37.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@esta.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="281.0" layoutY="235.0" text="MARCA Y MODELO." textFill="WHITE" />
+            <Label layoutX="297.0" layoutY="181.0" text="MATRICULA" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="150.0" fitWidth="208.0" layoutX="396.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="121.0" fitWidth="96.0" layoutX="24.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Gamos.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="53.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@E.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

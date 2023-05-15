@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="INICIO">
          <content>
@@ -69,8 +69,9 @@
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="siguiente" disable="true" layoutX="1020.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
-                  <Button fx:id="genPdf" disable="true" layoutX="939.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="siguiente" disable="true" layoutX="990.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
+                  <Button fx:id="genPdf" disable="true" layoutX="927.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="btnEliminar" disable="true" layoutX="1059.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
                </children>
             </AnchorPane>
          </content></Tab>
@@ -107,10 +108,5 @@
                </children>
             </AnchorPane>
          </content></Tab>
-      <Tab text="PDF">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-      </Tab>
   </tabs>
 </TabPane>
