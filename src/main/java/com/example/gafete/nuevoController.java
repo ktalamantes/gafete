@@ -194,9 +194,15 @@ public class nuevoController implements Initializable {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +
                     idP.getMatricula() + ".pdf"));
-            Image card = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\ALUMNO.jpg");
-            card.scaleToFit(400, 500);
-            card.setAlignment(Chunk.ALIGN_CENTER);
+            //Imagen alumno parte frontal
+            Image iAlumnoF = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno1.jpg");
+            iAlumnoF.scaleToFit(400, 250);
+            iAlumnoF.setAlignment(Chunk.ALIGN_CENTER);
+
+            //Iamgen alumno posterior
+            Image iAlumnoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno2.jpg");
+            iAlumnoP.scaleToFit(400, 250);
+            iAlumnoP.setAlignment(Chunk.ALIGN_CENTER);
 
             Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\MAESTRO.jpg");
             iMaestro.scaleToFit(400, 500);
@@ -220,7 +226,8 @@ public class nuevoController implements Initializable {
 
             if(idP.getPuesto().equals("Alumno")){
                 documento.open();
-                documento.add(card);
+                documento.add(iAlumnoF);
+                documento.add(iAlumnoP);
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
