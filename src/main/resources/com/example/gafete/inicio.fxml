@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="INICIO">
          <content>
@@ -97,7 +97,7 @@
                         <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
                         <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
                         <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
-                        <Button fx:id="eButton" layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" text="Guardar" />
+                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" text="Guardar" />
                         <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" text="Cancelar" />
                         <ComboBox fx:id="txtEPersona" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
                         <TextField fx:id="txtEPlaca" layoutX="410.0" layoutY="169.0" />

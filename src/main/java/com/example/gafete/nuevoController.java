@@ -150,6 +150,23 @@ public class nuevoController implements Initializable {
 
     @FXML
     public void editarUsuario (ActionEvent evt) {
+        tabGeneral.getSelectionModel().select(0);
+        try{
+            tmpConsulta.setNombre(txtEPropietario.getText());
+            tmpConsulta.setMatricula(txtEPlaca.getText());
+            tmpConsulta.setMarca(txtEMarca.getText());
+            tmpConsulta.setModelo(txtEModelo.getText());
+
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "UPDATE registros SET nombre='"+ tmpConsulta.getNombre()+  "',matricula='" + tmpConsulta.getMatricula() + "',marca='" + tmpConsulta.getMarca() +
+            "',modelo='" + tmpConsulta.getModelo() + "',color='" + tmpConsulta.getColor() + "',puesto='" + tmpConsulta.getPuesto() + "'WHERE id=" + idSolicitantes ;
+            //System.out.println("CAMBIOS GUARDADOS ");
+            stm.execute(sql);
+           refrescar();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
