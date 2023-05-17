@@ -12,6 +12,10 @@ public class alertasController implements Initializable {
 
     @FXML
     private Button btnRegistroU;
+    @FXML
+    private Button btnDescargaR;
+    @FXML
+    private Button btnEditar;
 
 
     @FXML
@@ -19,6 +23,18 @@ public class alertasController implements Initializable {
         Stage s = (Stage) btnRegistroU.getScene().getWindow();
         s.close();
     }//boton salirAgregar
+
+    @FXML
+    protected void btnAceptarD(){
+        Stage s = (Stage) btnDescargaR.getScene().getWindow();
+        s.close();
+    }
+
+    @FXML
+    protected void btnEditarA(){
+        Stage s = (Stage) btnEditar.getScene().getWindow();
+        s.close();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

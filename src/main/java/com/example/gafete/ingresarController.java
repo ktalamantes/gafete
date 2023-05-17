@@ -115,7 +115,7 @@ public class ingresarController implements Initializable {
         lista.add(new personal("Maestro"));
         lista.add(new personal("Alumno"));
         lista.add(new personal("Cafeteria"));
-        lista.add(new personal("Admnistrativo"));
+        lista.add(new personal("Administrativo"));
         lista.add(new personal("Gastronomia"));
         comPersona.setItems(lista);
     }

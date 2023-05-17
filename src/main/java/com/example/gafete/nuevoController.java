@@ -164,6 +164,12 @@ public class nuevoController implements Initializable {
             //System.out.println("CAMBIOS GUARDADOS ");
             stm.execute(sql);
            refrescar();
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioEditar.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("editar");
+            stage.setScene(escena);
+            stage.showAndWait();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -211,33 +217,54 @@ public class nuevoController implements Initializable {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +
                     idP.getMatricula() + ".pdf"));
+            //-------------------------------CREACION DE IMAGENES-------------------------------------------------------
             //Imagen alumno parte frontal
             Image iAlumnoF = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno1.jpg");
+            //Se le da escala a la imagen
             iAlumnoF.scaleToFit(400, 250);
+            //Se alinea la imagen en la hoja
             iAlumnoF.setAlignment(Chunk.ALIGN_CENTER);
 
-            //Iamgen alumno posterior
+            //Imagen alumno posterior
             Image iAlumnoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno2.jpg");
             iAlumnoP.scaleToFit(400, 250);
             iAlumnoP.setAlignment(Chunk.ALIGN_CENTER);
 
-            Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\MAESTRO.jpg");
+            Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro1.jpg");
             iMaestro.scaleToFit(400, 500);
             iMaestro.setAlignment(Chunk.ALIGN_CENTER);
 
+            //Imagen alumno posterior
+            Image iMaestroP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro2.jpg");
+            iMaestroP.scaleToFit(400, 250);
+            iMaestroP.setAlignment(Chunk.ALIGN_CENTER);
+
+            //Imagen administrativo frontal
+            Image iAdministrativo = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\admin1.jpg");
+            iAdministrativo.scaleToFit(400, 250);
+            iAdministrativo.setAlignment(Chunk.ALIGN_CENTER);
+
+            //Imagen adiministrativo posterior
+            Image iAdministrativoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\admin2.jpg");
+            iAdministrativoP.scaleToFit(400, 250);
+            iAdministrativoP.setAlignment(Chunk.ALIGN_CENTER);
+            //--------------------------------FIN CREACION DE IMAGENES--------------------------------------------------
+
+            //Se crea metodo para agregar texto en la hoja
             Paragraph matricula = new Paragraph();
+            //Se alinea la hoja
             matricula.setAlignment(Paragraph.PTABLE);
-            matricula.add(idP.getMatricula());
+            matricula.add(idP.getMatricula().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
             Paragraph marca = new Paragraph();
             matricula.setAlignment(Paragraph.ALIGN_TOP);
-            matricula.add("\n\n"+idP.getMarca()+"/");
+            matricula.add("\n\n"+idP.getMarca().toUpperCase()+"/");
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
             Paragraph modelo = new Paragraph();
             matricula.setAlignment(Paragraph.ALIGN_CENTER);
-            matricula.add(idP.getModelo());
+            matricula.add(idP.getModelo().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
 
@@ -251,6 +278,14 @@ public class nuevoController implements Initializable {
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
                 documento.add(iMaestro);
+                documento.add(iMaestroP);
+                documento.add(marca);
+                documento.add(modelo);
+                documento.add(matricula);
+            } else if (idP.getPuesto().equals("Administrativo")) {
+                documento.open();
+                documento.add(iAdministrativo);
+                documento.add(iAdministrativoP);
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
@@ -285,6 +320,12 @@ public class nuevoController implements Initializable {
             }
             documento.close();
             System.out.println("Documento creado. ");
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioDescargaLista.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("editar");
+            stage.setScene(escena);
+            stage.showAndWait();
         }catch (DocumentException | FileNotFoundException e){
             //e.printStackTrace();
             System.out.println("Error en PDF " + e);
