@@ -1,7 +1,7 @@
 package com.example.gafete;
 
-import com.itextpdf.text.Element;
-import com.itextpdf.text.PageSize;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -27,17 +26,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.PdfPTable;
 
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Font;
 
 public class nuevoController implements Initializable {
     @FXML
@@ -83,6 +72,8 @@ public class nuevoController implements Initializable {
     private Button siguiente;
     @FXML
     private Button genPdf;
+    @FXML
+    private Label lPersona;
     @FXML
     private Button btnCerrarLogin;
     @FXML
@@ -200,6 +191,8 @@ public class nuevoController implements Initializable {
             txtEModelo.setText(idP.getModelo());
             txtEPlaca.setText(idP.getMatricula());
             txtEPersona.getSelectionModel().getSelectedItem();
+            lPersona.setText(idP.getNombre().toUpperCase());
+            lPersona.setVisible(true);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -224,7 +217,6 @@ public class nuevoController implements Initializable {
             iAlumnoF.scaleToFit(400, 250);
             //Se alinea la imagen en la hoja
             iAlumnoF.setAlignment(Chunk.ALIGN_CENTER);
-
             //Imagen alumno posterior
             Image iAlumnoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno2.jpg");
             iAlumnoP.scaleToFit(400, 250);
@@ -233,7 +225,6 @@ public class nuevoController implements Initializable {
             Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro1.jpg");
             iMaestro.scaleToFit(400, 500);
             iMaestro.setAlignment(Chunk.ALIGN_CENTER);
-
             //Imagen alumno posterior
             Image iMaestroP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro2.jpg");
             iMaestroP.scaleToFit(400, 250);
@@ -243,11 +234,19 @@ public class nuevoController implements Initializable {
             Image iAdministrativo = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\admin1.jpg");
             iAdministrativo.scaleToFit(400, 250);
             iAdministrativo.setAlignment(Chunk.ALIGN_CENTER);
-
             //Imagen adiministrativo posterior
             Image iAdministrativoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\admin2.jpg");
             iAdministrativoP.scaleToFit(400, 250);
             iAdministrativoP.setAlignment(Chunk.ALIGN_CENTER);
+
+            //Imagen cafe frontal
+            Image iCafe = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\cafe1.jpg");
+            iCafe.scaleToFit(400, 250);
+            iCafe.setAlignment(Chunk.ALIGN_CENTER);
+            //Imagen cafe posterior
+            Image iCafeP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\cafe2.jpg");
+            iCafeP.scaleToFit(400, 250);
+            iCafeP.setAlignment(Chunk.ALIGN_CENTER);
             //--------------------------------FIN CREACION DE IMAGENES--------------------------------------------------
 
             //Se crea metodo para agregar texto en la hoja
@@ -267,6 +266,25 @@ public class nuevoController implements Initializable {
             matricula.add(idP.getModelo().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
+            //---------------------prueba-------------------
+
+
+            Paragraph matri = new Paragraph(idP.getMatricula());
+            //matri.setAlignment(Element.ALIGN_LEFT);
+            matri.setAlignment(20);
+
+            //matri.setFirstLineIndent(20);
+
+
+
+
+
+            //--------------------prueba---------------------
+            //----------Codigo QR-------------
+            /*String texto = "Hola";
+            BarcodeQRCode qrCode = new BarcodeQRCode(texto,null);
+             */
+
 
             if(idP.getPuesto().equals("Alumno")){
                 documento.open();
@@ -275,6 +293,8 @@ public class nuevoController implements Initializable {
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
+                documento.add(matri);
+                //documento.add((Element) qrCode);
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
                 documento.add(iMaestro);
@@ -289,7 +309,18 @@ public class nuevoController implements Initializable {
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
-            }
+            } else if (idP.getPuesto().equals("Cafeteria")) {
+                documento.open();
+                documento.add(iCafe);
+                documento.add(iCafeP);
+                documento.add(matricula);
+                documento.add(marca);
+                documento.add(modelo);
+            } else if (idP.getPuesto().equals("Gastronomia")) {
+
+            } 
+
+
 
 
             /*

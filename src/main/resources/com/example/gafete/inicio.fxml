@@ -16,63 +16,63 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1141.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1010.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="INICIO">
          <content>
-            <AnchorPane prefHeight="582.0" prefWidth="1012.0">
+            <AnchorPane prefHeight="655.0" prefWidth="929.0">
                <children>
-                  <TextField fx:id="buscar" alignment="CENTER" layoutX="324.0" layoutY="126.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="363.0" promptText="Buscar matricula..." style="-fx-border-color: #1361E8; -fx-border-radius: 12;" />
+                  <ImageView fitHeight="682.0" fitWidth="1103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../porta.jpg" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="buscar" alignment="CENTER" layoutX="271.0" layoutY="126.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-border-color: #1361E8; -fx-border-radius: 12;" />
                   <Text layoutX="372.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAFETE DE VEHICULOS">
                      <font>
                         <Font name="Brush Script MT Italic" size="26.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="656.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="429.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../lupa.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1046.0" layoutY="114.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1046.0">
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="792.0" layoutY="113.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="792.0">
                      <image>
                         <Image url="@../../../usuario1.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="946.0" layoutY="118.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="946.0" AnchorPane.rightAnchor="138.4686866760253">
+                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="714.0" layoutY="119.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="714.0" AnchorPane.rightAnchor="370.4686866760253">
                      <image>
                         <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="330.0" prefWidth="1102.0">
+                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="339.0" prefWidth="947.0">
                      <columns>
-                        <TableColumn fx:id="id" prefWidth="36.79998779296875" text="No." />
-                        <TableColumn fx:id="propietario" prefWidth="256.7999687194824" text="PROPIETARIO" />
-                        <TableColumn fx:id="placas" prefWidth="99.199951171875" text="MATRICULA" />
-                        <TableColumn fx:id="marca" prefWidth="90.39999389648438" text="MARCA" />
-                        <TableColumn fx:id="modelo" prefWidth="85.5999755859375" text="MODELO" />
-                        <TableColumn fx:id="color" prefWidth="83.20001220703125" text="COLOR" />
-                        <TableColumn fx:id="persona" prefWidth="142.4000244140625" text="PERSONA" />
-                        <TableColumn prefWidth="142.4000244140625" text="EMISION" />
-                        <TableColumn prefWidth="160.79998779296875" text="VENCIMIENTO" />
+                        <TableColumn fx:id="id" prefWidth="29.5999755859375" text="No." />
+                        <TableColumn fx:id="propietario" prefWidth="302.3999824523926" text="PROPIETARIO" />
+                        <TableColumn fx:id="placas" prefWidth="82.4000244140625" text="MATRICULA" />
+                        <TableColumn fx:id="marca" prefWidth="70.4000244140625" text="MARCA" />
+                        <TableColumn fx:id="modelo" prefWidth="63.20001220703125" text="MODELO" />
+                        <TableColumn fx:id="color" prefWidth="60.79998779296875" text="COLOR" />
+                        <TableColumn fx:id="persona" prefWidth="99.20001220703125" text="PERSONA" />
+                        <TableColumn prefWidth="135.199951171875" text="EMISION" />
+                        <TableColumn prefWidth="97.5999755859375" text="VENCIMIENTO" />
                      </columns>
                   </TableView>
-                  <ImageView fitHeight="65.0" fitWidth="957.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../tec.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="722.0" layoutY="134.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
-                  <Button fx:id="btnCerrarLogin" layoutX="822.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Button layoutX="493.0" layoutY="133.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
+                  <Button fx:id="btnCerrarLogin" layoutX="599.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="78.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="86.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="siguiente" disable="true" layoutX="990.0" layoutY="555.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
-                  <Button fx:id="genPdf" disable="true" layoutX="835.0" layoutY="555.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
-                  <Button fx:id="btnEliminar" disable="true" layoutX="1059.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
-                  <Button fx:id="btnFecha" disable="true" layoutX="887.0" layoutY="555.0" mnemonicParsing="false" onAction="#agregarFecha" text="VENCIMIENTO" />
+                  <Button fx:id="siguiente" disable="true" layoutX="764.0" layoutY="568.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
+                  <Button fx:id="genPdf" disable="true" layoutX="599.0" layoutY="568.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="btnEliminar" disable="true" layoutX="835.0" layoutY="568.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
+                  <Button fx:id="btnFecha" disable="true" layoutX="654.0" layoutY="568.0" mnemonicParsing="false" onAction="#agregarFecha" text="VENCIMIENTO" />
                </children>
             </AnchorPane>
          </content></Tab>
@@ -80,7 +80,12 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="293.0" layoutY="157.0" prefHeight="309.0" prefWidth="602.0" style="-fx-background-color: #D7E5FA;" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="257.0">
+                  <ImageView fitHeight="682.0" fitWidth="1018.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../porta.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="204.0" layoutY="209.0" prefHeight="309.0" prefWidth="602.0" style="-fx-background-color: #D7E5FA; -fx-border-color: BLACK;" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="346.0">
                      <children>
                         <Pane opacity="0.33" prefHeight="44.0" prefWidth="608.0" style="-fx-background-color: #C0B7FA;">
                            <children>
@@ -91,35 +96,35 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Label layoutX="43.0" layoutY="76.0" text="Personas:" />
+                        <Label layoutX="47.0" layoutY="57.0" text="EDITANDO A:">
+                           <font>
+                              <Font name="Berlin Sans FB" size="16.0" />
+                           </font></Label>
                         <Label layoutX="54.0" layoutY="128.0" text="Prpopietario:" />
                         <Label layoutX="54.0" layoutY="173.0" text="Marca:" />
                         <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
                         <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
                         <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
-                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" text="Guardar" />
-                        <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" text="Cancelar" />
+                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" style="-fx-border-color: BLACK;" text="Guardar" />
+                        <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
                         <ComboBox fx:id="txtEPersona" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
                         <TextField fx:id="txtEPlaca" layoutX="410.0" layoutY="169.0" />
                         <TextField fx:id="txtEMarca" layoutX="98.0" layoutY="169.0" />
                         <TextField fx:id="txtEModelo" layoutX="115.0" layoutY="215.0" />
                         <TextField fx:id="txtEPropietario" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
+                        <Label fx:id="lPersona" layoutX="150.0" layoutY="55.0" prefHeight="22.0" prefWidth="424.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="19.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="73.0" fitWidth="996.0" opacity="0.48" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="103.0">
-                     <image>
-                        <Image url="@../../../tec.png" />
-                     </image>
-                  </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="49.0" layoutY="269.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
-                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="58.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btnCerrarLogin1" layoutX="669.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Button disable="true" layoutX="560.0" layoutY="121.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="67.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
+                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="76.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="77.0" fitWidth="1035.0" layoutX="59.0" layoutY="578.0" opacity="0.9" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="103.0">
-                     <image>
-                        <Image url="@topBanner.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -127,7 +132,14 @@
          </content></Tab>
       <Tab text="VENCIMIENTO">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="681.0" fitWidth="1016.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../porta.jpg" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>
