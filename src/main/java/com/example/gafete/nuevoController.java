@@ -1,5 +1,7 @@
 package com.example.gafete;
 
+
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
@@ -205,7 +207,7 @@ public class nuevoController implements Initializable {
     @FXML
     public void sigueintePDF(){
         //tabGeneral.getSelectionModel().select(2);
-        Document documento = new Document();
+        Document documento = new Document(PageSize.A4);
         try{
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\OneDrive\\Escritorio\\PDF\\" +

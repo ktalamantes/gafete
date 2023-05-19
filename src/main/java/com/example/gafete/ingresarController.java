@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,7 +53,6 @@ public class ingresarController implements Initializable {
 
     @FXML
     protected void agregarBtn(){
-        LocalDateTime diaActual = LocalDateTime.now();
         try{
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
