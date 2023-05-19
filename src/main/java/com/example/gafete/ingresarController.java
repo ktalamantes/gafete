@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -18,6 +15,8 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ingresarController implements Initializable {
     @FXML
@@ -67,24 +66,42 @@ public class ingresarController implements Initializable {
                     comPersona.getSelectionModel().getSelectedItem().toString() + "')";
             stm.execute(sql2);
              */
-            String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" + txtMatriculaA.getText() + "','" +
-                    txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
-                    comPersona.getSelectionModel().getSelectedItem().toString() + "')";
-            stm.executeUpdate(sql);
-            //String sql1 = "INSERT INTO gafetes VALUES (0, 1'" + diaActual + "','" + fechaV.getValue() + "')";
-            //String sql1 = "INSERT INTO gafetes (id_automovil, fecha_vencimimiento)VALUES (0,'" + fechaV.getValue() + "')";
-            String sql1 = "INSERT INTO gafetes VALUES (0, 3, null,'" + fechaV.getValue() + "')";
-            //stm.execute(sql1);
-            stm.executeUpdate(sql1);
-            System.out.println("DATOS INSERTADOS EN persona");
+            // Crear una variable que va contener lo del texfield
+            String matricula = txtMatriculaA.getText();
+            //Hacer la expresion regular
+            String cadena = "^[A-Z0-9]{7}$";
+            //Utilizar el Pattern y Martcher  para presentar el patron y  y aplicar el patron
+            Pattern p = Pattern.compile(cadena);
+            Matcher m = p.matcher(matricula);
+            // el if para validar la que la cadena este dentro del patron
+            if(m.matches()) {
+                String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" +matricula + "','" +
+                        txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
+                        comPersona.getSelectionModel().getSelectedItem().toString() + "')";
+                stm.executeUpdate(sql);
+                //String sql1 = "INSERT INTO gafetes VALUES (0, 1'" + diaActual + "','" + fechaV.getValue() + "')";
+                //String sql1 = "INSERT INTO gafetes (id_automovil, fecha_vencimimiento)VALUES (0,'" + fechaV.getValue() + "')";
+               String sql1 = "INSERT INTO gafetes VALUES (0, 3, null,'" + fechaV.getValue() + "')";
+                stm.execute(sql1);
+               // stm.executeUpdate(sql1);
+                System.out.println("DATOS INSERTADOS EN persona");
 
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioRegistroCreado.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-            //actualizar();
+
+                Stage stage = new Stage();//Crear una nueva ventana
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioRegistroCreado.fxml"));
+                Scene escena = new Scene(loader.load());
+                stage.setTitle("editar");
+                stage.setScene(escena);
+                stage.showAndWait();
+                //actualizar();
+            }else {
+                System.out.println("MATRICULA NO VALIDA");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Contraseña no valida");
+                alert.setContentText("LA MATRICULA NO ES VALIDA");
+                alert.showAndWait();
+            }
 
 
         }catch (Exception e){
@@ -98,8 +115,8 @@ public class ingresarController implements Initializable {
             txtMarcaA.setText("");
             txtMatriculaA.setText("");
          */
-        Stage cerrar = (Stage) btnG.getScene().getWindow();
-        cerrar.close();
+        //Stage cerrar = (Stage) btnG.getScene().getWindow();
+       // cerrar.close();
     }
 
     @FXML
