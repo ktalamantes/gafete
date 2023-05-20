@@ -613,6 +613,10 @@ public class nuevoController implements Initializable {
             saludo = "¡Buenos días!";
         } else if (hora >= 12 && hora < 20) {
             saludo = "¡Buenas tardes!";
+        } else if (hora >=20 && hora <22) {
+            saludo = "¡Buenas noches!";
+        } else if (hora >= 22 && hora <6) {
+            saludo = "¡Buena madrugada!";
         }
         lSaludo.setText(saludo);
     }
