@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -192,30 +193,30 @@
                               <Font name="Berlin Sans FB" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="54.0" layoutY="128.0" text="Prpopietario:" />
-                        <Label layoutX="54.0" layoutY="173.0" text="Marca:" />
-                        <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
-                        <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
-                        <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
-                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" style="-fx-border-color: BLACK;" text="Guardar" />
-                        <Button fx:id="btnSalirE1" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
-                        <ComboBox fx:id="txtEPersona1" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
-                        <TextField fx:id="txtEPlaca1" layoutX="410.0" layoutY="169.0" />
-                        <TextField fx:id="txtEMarca1" layoutX="98.0" layoutY="169.0" />
-                        <TextField fx:id="txtEModelo1" layoutX="115.0" layoutY="215.0" />
-                        <TextField fx:id="txtEPropietario1" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
+                        <Button layoutX="649.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnVencimiento" style="-fx-border-color: BLACK;" text="Guardar" />
+                        <Button fx:id="btnSalirE1" layoutX="750.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
                         <Label fx:id="lPersona1" layoutX="150.0" layoutY="55.0" prefHeight="22.0" prefWidth="424.0">
                            <font>
                               <Font name="Berlin Sans FB" size="19.0" />
                            </font>
                         </Label>
+                        <DatePicker fx:id="fechaV" layoutX="474.0" layoutY="163.0" />
+                        <DatePicker layoutX="74.0" layoutY="163.0" />
+                        <Label layoutX="74.0" layoutY="137.0" text="FECHA DE EMISION:" />
+                        <Label layoutX="483.0" layoutY="137.0" text="FECHA DE VENCIMIENTO:" />
+                        <TextField fx:id="txtEId" disable="true" layoutX="195.0" layoutY="85.0" prefHeight="26.0" prefWidth="51.0" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="354.0" layoutY="111.0" text="VENCIMIENTO DEL GAFETE">
+                  <Label layoutX="405.0" layoutY="126.0" text="VENCIMIENTO DEL GAFETE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="115.0" fitWidth="80.0" layoutX="304.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@carnet-de-identidad.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
         </content>
       </Tab>

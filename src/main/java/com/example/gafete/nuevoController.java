@@ -27,7 +27,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -98,6 +97,11 @@ public class nuevoController implements Initializable {
     private TextField txtEPlaca;
     @FXML
     private Label lSaludo;
+    @FXML
+    private DatePicker fechaV;
+    @FXML
+    private TextField txtEId;
+
     @FXML
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
@@ -205,8 +209,32 @@ public class nuevoController implements Initializable {
     }
 
     @FXML
+    public void btnVencimiento(ActionEvent evt){
+        try{
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "INSERT INTO gafetes VALUES (0,'" + idSolicitantes + "', null,'" +
+                    fechaV.getValue() + "')";
+            stm.executeQuery(sql);
+            System.out.println("Datos insertados. ");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+
+    @FXML
     public void agregarFecha(){
         tabGeneral.getSelectionModel().select(2);
+        try{
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql1 = "SELECT * FROM registros WHERE id= " + idSolicitantes;
+            stm.executeQuery(sql1);
+            txtEId.setText(String.valueOf(idP.getId()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     @FXML
     public void sigueintePDF(){
