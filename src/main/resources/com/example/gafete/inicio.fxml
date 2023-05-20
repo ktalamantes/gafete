@@ -28,7 +28,7 @@
                         <Image url="@../../../porta.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="buscar" alignment="CENTER" layoutX="271.0" layoutY="126.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-border-color: #1361E8; -fx-border-radius: 12;" />
+                  <TextField fx:id="buscar" alignment="CENTER" layoutX="271.0" layoutY="126.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-background-radius: 20;" />
                   <Text layoutX="372.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAFETE DE VEHICULOS">
                      <font>
                         <Font name="Brush Script MT Italic" size="26.0" />
@@ -58,12 +58,12 @@
                         <TableColumn fx:id="modelo" prefWidth="63.20001220703125" text="MODELO" />
                         <TableColumn fx:id="color" prefWidth="60.79998779296875" text="COLOR" />
                         <TableColumn fx:id="persona" prefWidth="99.20001220703125" text="PERSONA" />
-                        <TableColumn prefWidth="135.199951171875" text="EMISION" />
-                        <TableColumn prefWidth="97.5999755859375" text="VENCIMIENTO" />
+                        <TableColumn fx:id="emision" prefWidth="135.199951171875" text="EMISION" />
+                        <TableColumn fx:id="vencimiento" prefWidth="97.5999755859375" text="VENCIMIENTO" />
                      </columns>
                   </TableView>
-                  <Button layoutX="493.0" layoutY="133.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
-                  <Button fx:id="btnCerrarLogin" layoutX="599.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Button layoutX="493.0" layoutY="133.0" mnemonicParsing="false" onAction="#refrescar" style="-fx-background-radius: 20;" text="REFRESCAR" />
+                  <Button fx:id="btnCerrarLogin" layoutX="599.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="78.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="86.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -141,7 +141,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnCerrarLogin1" layoutX="766.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Button fx:id="btnCerrarLogin1" layoutX="766.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="67.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="76.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -170,7 +170,7 @@
                         <Image url="@../../../porta.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnCerrarLogin2" layoutX="776.0" layoutY="130.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Button fx:id="btnCerrarLogin2" layoutX="776.0" layoutY="130.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="88.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="96.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -193,8 +193,8 @@
                               <Font name="Berlin Sans FB" size="16.0" />
                            </font>
                         </Label>
-                        <Button layoutX="649.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnVencimiento" style="-fx-border-color: BLACK;" text="Guardar" />
-                        <Button fx:id="btnSalirE1" layoutX="750.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
+                        <Button layoutX="649.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnVencimiento" style="-fx-background-radius: 15;" text="Guardar" />
+                        <Button fx:id="btnSalirE1" layoutX="750.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-background-radius: 15;" text="Cancelar" />
                         <Label fx:id="lPersona1" layoutX="150.0" layoutY="55.0" prefHeight="22.0" prefWidth="424.0">
                            <font>
                               <Font name="Berlin Sans FB" size="19.0" />

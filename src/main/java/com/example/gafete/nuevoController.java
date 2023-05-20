@@ -64,6 +64,10 @@ public class nuevoController implements Initializable {
     private TableColumn color;
     @FXML
     private TableColumn persona;
+    @FXML
+    private TableColumn emision;
+    @FXML
+    private TableColumn vencimiento;
 
     @FXML private TextField prop;
     @FXML private TextField mar;
@@ -106,10 +110,13 @@ public class nuevoController implements Initializable {
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
     private Consulta tmpConsulta;
+    private ConsultaFecha tmpConsultaF;
+    private ConsultaFecha idF;
 
     private ObservableList<personal> lista;
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
+    ObservableList<ConsultaTotal> listaT = FXCollections.observableArrayList();
 
 
 
@@ -210,12 +217,13 @@ public class nuevoController implements Initializable {
 
     @FXML
     public void btnVencimiento(ActionEvent evt){
+        tabGeneral.getSelectionModel().select(0);
         try{
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "INSERT INTO gafetes VALUES (0,'" + idSolicitantes + "', null,'" +
+            String sql = "INSERT INTO gafetes VALUES (0,'" + txtEId.getText() + "', null,'" +
                     fechaV.getValue() + "')";
-            stm.executeQuery(sql);
+            stm.execute(sql);
             System.out.println("Datos insertados. ");
         }catch (Exception e){
             e.printStackTrace();
@@ -428,23 +436,10 @@ public class nuevoController implements Initializable {
        }
     }
 
-    /*
-    try{
-            if(idP != null){
-                lista2.remove(idP);
-                Connection c = Enlace.getConexion();
-                Statement stm = c.createStatement();
-                String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
-                stm.executeLargeUpdate(sql);
-            }
-            System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-     */
 
     //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
     int idSolicitantes;
+    int idFSolicitantes;
     @FXML
     public void ClickTablaSolicitantes(MouseEvent evt) {
         if (evt.getClickCount() >= 1) {
@@ -520,6 +515,45 @@ public class nuevoController implements Initializable {
                 modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+            }
+            stm.close();
+            tablita.refresh();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //tabla.refresh();
+    }
+
+    @FXML
+    private void actualizarTotal(){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM registros INNER JOIN gafetes ON registros.id = gafetes.id";
+            //String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
+            ResultSet r = stm.executeQuery(sql);
+            listaT.clear();
+            while (r.next()){
+                tablita.setItems(listaT);
+                listaT.add(new ConsultaTotal(r.getInt("id"),
+                        r.getString("nombre"),
+                        r.getString("matricula"),
+                        r.getString("marca"),
+                        r.getString("modelo"),
+                        r.getString("color"),
+                        r.getString("puesto"),
+                        r.getDate("fecha_emision"),
+                        r.getDate("fecha_vencimiento")));
+                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                System.out.println(r.getString("id"));
+                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                emision.setCellValueFactory(new PropertyValueFactory<>("fecha_emision"));
+                vencimiento.setCellValueFactory(new PropertyValueFactory<>("fecha_vencimiento"));
             }
             stm.close();
             tablita.refresh();
