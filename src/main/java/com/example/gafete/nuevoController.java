@@ -1,6 +1,7 @@
 package com.example.gafete;
 
-
+import java.time.LocalTime;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -26,6 +27,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -94,6 +96,8 @@ public class nuevoController implements Initializable {
     private TextField txtEModelo;
     @FXML
     private TextField txtEPlaca;
+    @FXML
+    private Label lSaludo;
     @FXML
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
@@ -215,9 +219,7 @@ public class nuevoController implements Initializable {
             //-------------------------------CREACION DE IMAGENES-------------------------------------------------------
             //Imagen alumno parte frontal
             Image iAlumnoF = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno1.jpg");
-            //Se le da escala a la imagen
             iAlumnoF.scaleToFit(400, 250);
-            //Se alinea la imagen en la hoja
             iAlumnoF.setAlignment(Chunk.ALIGN_CENTER);
             //Imagen alumno posterior
             Image iAlumnoP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\alumno2.jpg");
@@ -249,11 +251,19 @@ public class nuevoController implements Initializable {
             Image iCafeP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\cafe2.jpg");
             iCafeP.scaleToFit(400, 250);
             iCafeP.setAlignment(Chunk.ALIGN_CENTER);
+
+            //Imagen cafe frontal
+            Image iGasF = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\gas1.jpg");
+            iGasF.scaleToFit(400, 250);
+            iGasF.setAlignment(Chunk.ALIGN_CENTER);
+            //Imagen cafe posterior
+            Image iGasP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\gas2.jpg");
+            iGasP.scaleToFit(400, 250);
+            iGasP.setAlignment(Chunk.ALIGN_CENTER);
             //--------------------------------FIN CREACION DE IMAGENES--------------------------------------------------
 
-            //Se crea metodo para agregar texto en la hoja
+            //Se crea metodo para agregar texto en la hoja así mismo como agregarle estilo de fuente y alineacion
             Paragraph matricula = new Paragraph();
-            //Se alinea la hoja
             matricula.setAlignment(Paragraph.PTABLE);
             matricula.add(idP.getMatricula().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
@@ -271,23 +281,7 @@ public class nuevoController implements Initializable {
             //---------------------prueba-------------------
 
 
-            Paragraph matri = new Paragraph(idP.getMatricula());
-            //matri.setAlignment(Element.ALIGN_LEFT);
-            matri.setAlignment(20);
-
-            //matri.setFirstLineIndent(20);
-
-
-
-
-
-            //--------------------prueba---------------------
-            //----------Codigo QR-------------
-            /*String texto = "Hola";
-            BarcodeQRCode qrCode = new BarcodeQRCode(texto,null);
-             */
-
-
+            //Se crean if para saber si el puesto es de cada departamento
             if(idP.getPuesto().equals("Alumno")){
                 documento.open();
                 documento.add(iAlumnoF);
@@ -295,7 +289,6 @@ public class nuevoController implements Initializable {
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
-                documento.add(matri);
                 //documento.add((Element) qrCode);
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
@@ -319,7 +312,12 @@ public class nuevoController implements Initializable {
                 documento.add(marca);
                 documento.add(modelo);
             } else if (idP.getPuesto().equals("Gastronomia")) {
-
+                documento.open();
+                documento.add(iGasF);
+                documento.add(iGasP);
+                documento.add(matricula);
+                documento.add(marca);
+                documento.add(modelo);
             } 
 
 
@@ -380,7 +378,30 @@ public class nuevoController implements Initializable {
 
     @FXML
     public void eliminarPersona(ActionEvent evt){
-        try{
+       try{
+           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+           alert.setHeaderText(null);
+           alert.setTitle("Confirmacion");
+           alert.setContentText("¿Deseas realmente confirmar?");
+           alert.showAndWait();
+           if(alert.equals("")){
+               if(idP != null){
+                   lista2.remove(idP);
+                   Connection c = Enlace.getConexion();
+                   Statement stm = c.createStatement();
+                   String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
+                   stm.executeLargeUpdate(sql);
+               }
+               System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
+           }
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+    }
+
+    /*
+    try{
             if(idP != null){
                 lista2.remove(idP);
                 Connection c = Enlace.getConexion();
@@ -392,7 +413,7 @@ public class nuevoController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
+     */
 
     //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
     int idSolicitantes;
@@ -555,6 +576,19 @@ public class nuevoController implements Initializable {
         }
     }
 
+    public void saludos(){
+        LocalTime horalLocal = LocalTime.now();
+
+        int hora = horalLocal.getHour();
+        String saludo = "";
+        if(hora >= 6 && hora < 12){
+            saludo = "¡Buenos días!";
+        } else if (hora >= 12 && hora < 20) {
+            saludo = "¡Buenas tardes!";
+        }
+        lSaludo.setText(saludo);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lista= FXCollections.observableArrayList();
@@ -566,6 +600,7 @@ public class nuevoController implements Initializable {
         txtEPersona.setItems(lista);
         actualizar();
         refrescar();
+        saludos();
     }
 
 }

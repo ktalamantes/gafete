@@ -38,7 +38,7 @@
                         <Image url="@../../../lupa.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="792.0" layoutY="113.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="792.0">
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="712.0" layoutY="59.0" onMouseClicked="#imagenCuenta" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="712.0">
                      <image>
                         <Image url="@../../../usuario1.png" />
                      </image>
@@ -48,7 +48,7 @@
                         <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="339.0" prefWidth="947.0">
+                  <TableView fx:id="tablita" layoutX="24.0" layoutY="206.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="339.0" prefWidth="947.0" style="-fx-border-color: black;">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="29.5999755859375" text="No." />
                         <TableColumn fx:id="propietario" prefWidth="302.3999824523926" text="PROPIETARIO" />
@@ -73,6 +73,12 @@
                   <Button fx:id="genPdf" disable="true" layoutX="599.0" layoutY="568.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
                   <Button fx:id="btnEliminar" disable="true" layoutX="835.0" layoutY="568.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
                   <Button fx:id="btnFecha" disable="true" layoutX="654.0" layoutY="568.0" mnemonicParsing="false" onAction="#agregarFecha" text="VENCIMIENTO" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c6f4e9" height="100.0" layoutX="825.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="157.0" />
+                  <Label fx:id="lSaludo" layoutX="848.0" layoutY="101.0" prefHeight="20.0" prefWidth="110.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </content></Tab>
@@ -85,11 +91,11 @@
                         <Image url="@../../../porta.jpg" />
                      </image>
                   </ImageView>
-                  <AnchorPane layoutX="204.0" layoutY="209.0" prefHeight="309.0" prefWidth="602.0" style="-fx-background-color: #D7E5FA; -fx-border-color: BLACK;" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="346.0">
+                  <AnchorPane layoutX="94.0" layoutY="201.0" prefHeight="355.0" prefWidth="842.0" style="-fx-background-color: #D7E5FA; -fx-border-color: BLACK;" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="94.0">
                      <children>
-                        <Pane opacity="0.33" prefHeight="44.0" prefWidth="608.0" style="-fx-background-color: #C0B7FA;">
+                        <Pane opacity="0.33" prefHeight="46.0" prefWidth="832.0" style="-fx-background-color: #C0B7FA;">
                            <children>
-                              <Label layoutX="237.0" layoutY="12.0" text="EDITAR USUARIO">
+                              <Label layoutX="349.0" layoutY="13.0" text="EDITAR USUARIO">
                                  <font>
                                     <Font name="Berlin Sans FB" size="18.0" />
                                  </font>
@@ -100,18 +106,33 @@
                            <font>
                               <Font name="Berlin Sans FB" size="16.0" />
                            </font></Label>
-                        <Label layoutX="54.0" layoutY="128.0" text="Prpopietario:" />
-                        <Label layoutX="54.0" layoutY="173.0" text="Marca:" />
-                        <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
-                        <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
-                        <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
-                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" style="-fx-border-color: BLACK;" text="Guardar" />
-                        <Button fx:id="btnSalirE" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
-                        <ComboBox fx:id="txtEPersona" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
-                        <TextField fx:id="txtEPlaca" layoutX="410.0" layoutY="169.0" />
-                        <TextField fx:id="txtEMarca" layoutX="98.0" layoutY="169.0" />
-                        <TextField fx:id="txtEModelo" layoutX="115.0" layoutY="215.0" />
-                        <TextField fx:id="txtEPropietario" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
+                        <Label layoutX="44.0" layoutY="123.0" text="Propietario:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label layoutX="44.0" layoutY="190.0" text="Marca:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label layoutX="38.0" layoutY="252.0" text="Modelo:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label layoutX="551.0" layoutY="123.0" text="Placa:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label layoutX="424.0" layoutY="248.0" text="Persona:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Button layoutX="635.0" layoutY="304.0" mnemonicParsing="false" onAction="#editarUsuario" style="-fx-border-color: BLACK;" text="Guardar" />
+                        <Button fx:id="btnSalirE" layoutX="745.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
+                        <ComboBox fx:id="txtEPersona" layoutX="499.0" layoutY="245.0" prefHeight="34.0" prefWidth="182.0" />
+                        <TextField fx:id="txtEPlaca" layoutX="608.0" layoutY="119.0" prefHeight="33.0" prefWidth="200.0" />
+                        <TextField fx:id="txtEMarca" layoutX="102.0" layoutY="188.0" prefHeight="32.0" prefWidth="196.0" />
+                        <TextField fx:id="txtEModelo" layoutX="111.0" layoutY="251.0" prefHeight="31.0" prefWidth="178.0" />
+                        <TextField fx:id="txtEPropietario" layoutX="141.0" layoutY="116.0" prefHeight="36.0" prefWidth="372.0" />
                         <Label fx:id="lPersona" layoutX="150.0" layoutY="55.0" prefHeight="22.0" prefWidth="424.0">
                            <font>
                               <Font name="Berlin Sans FB" size="19.0" />
@@ -119,12 +140,21 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnCerrarLogin1" layoutX="669.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
-                  <Button disable="true" layoutX="560.0" layoutY="121.0" mnemonicParsing="false" onAction="#refrescar" text="REFRESCAR" />
+                  <Button fx:id="btnCerrarLogin1" layoutX="766.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="67.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
                   <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="76.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="433.0" layoutY="119.0" text="EDITANDO USUARIO">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="88.0" fitWidth="76.0" layoutX="337.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../editar.png" />
                      </image>
                   </ImageView>
                </children>
@@ -139,6 +169,53 @@
                         <Image url="@../../../porta.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="btnCerrarLogin2" layoutX="776.0" layoutY="130.0" mnemonicParsing="false" onAction="#cerrarSql" text="CERRAR SESIÓN" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="88.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
+                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="96.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="72.0" layoutY="228.0" prefHeight="350.0" prefWidth="853.0" style="-fx-background-color: #D7E5FA; -fx-border-color: BLACK;">
+                     <children>
+                        <Pane opacity="0.33" prefHeight="44.0" prefWidth="855.0" style="-fx-background-color: #C0B7FA;">
+                           <children>
+                              <Label layoutX="338.0" layoutY="12.0" text="FECHA DE VENCIMIENTO">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label layoutX="47.0" layoutY="57.0" text="GAFETE DE:">
+                           <font>
+                              <Font name="Berlin Sans FB" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="54.0" layoutY="128.0" text="Prpopietario:" />
+                        <Label layoutX="54.0" layoutY="173.0" text="Marca:" />
+                        <Label layoutX="50.0" layoutY="219.0" text="Modelo:" />
+                        <Label layoutX="351.0" layoutY="173.0" text="Placa:" />
+                        <Label layoutX="351.0" layoutY="219.0" text="Persona:" />
+                        <Button layoutX="410.0" layoutY="268.0" mnemonicParsing="false" onAction="#editarUsuario" style="-fx-border-color: BLACK;" text="Guardar" />
+                        <Button fx:id="btnSalirE1" layoutX="499.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSalirEditar" style="-fx-border-color: BLACK;" text="Cancelar" />
+                        <ComboBox fx:id="txtEPersona1" layoutX="410.0" layoutY="215.0" prefWidth="150.0" />
+                        <TextField fx:id="txtEPlaca1" layoutX="410.0" layoutY="169.0" />
+                        <TextField fx:id="txtEMarca1" layoutX="98.0" layoutY="169.0" />
+                        <TextField fx:id="txtEModelo1" layoutX="115.0" layoutY="215.0" />
+                        <TextField fx:id="txtEPropietario1" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="336.0" />
+                        <Label fx:id="lPersona1" layoutX="150.0" layoutY="55.0" prefHeight="22.0" prefWidth="424.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="354.0" layoutY="111.0" text="VENCIMIENTO DEL GAFETE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
       </Tab>
