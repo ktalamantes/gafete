@@ -302,12 +302,12 @@ public class nuevoController implements Initializable {
 
             //Se crea metodo para agregar texto en la hoja así mismo como agregarle estilo de fuente y alineacion
             Paragraph matricula = new Paragraph();
-            matricula.setAlignment(Paragraph.PTABLE);
+            matricula.setAlignment(Paragraph.ALIGN_MIDDLE);
             matricula.add(idP.getMatricula().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
             Paragraph marca = new Paragraph();
-            matricula.setAlignment(Paragraph.ALIGN_TOP);
+            matricula.setAlignment(Paragraph.ALIGN_CENTER);
             matricula.add("\n\n"+idP.getMarca().toUpperCase()+"/");
             matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
 
@@ -321,13 +321,21 @@ public class nuevoController implements Initializable {
 
             //Se crean if para saber si el puesto es de cada departamento
             if(idP.getPuesto().equals("Alumno")){
+                /*
                 documento.open();
                 documento.add(iAlumnoF);
                 documento.add(iAlumnoP);
                 documento.add(matricula);
                 documento.add(marca);
                 documento.add(modelo);
-                //documento.add((Element) qrCode);
+                 */
+                //documento.newPage();
+                documento.open();
+                iAlumnoF.setAbsolutePosition(150f, 500f);
+                documento.add(iAlumnoF);
+                documento.add(matricula);
+                documento.add(marca);
+                documento.add(modelo);
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
                 documento.add(iMaestro);
