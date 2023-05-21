@@ -106,6 +106,8 @@ public class nuevoController implements Initializable {
     @FXML
     private TextField txtEId;
 
+
+
     @FXML
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
@@ -534,7 +536,7 @@ public class nuevoController implements Initializable {
             ResultSet r = stm.executeQuery(sql);
             listaT.clear();
             while (r.next()){
-                tablita.setItems(listaT);
+                tabla2.setItems(listaT);
                 listaT.add(new ConsultaTotal(r.getInt("id"),
                         r.getString("nombre"),
                         r.getString("matricula"),
@@ -544,19 +546,19 @@ public class nuevoController implements Initializable {
                         r.getString("puesto"),
                         r.getDate("fecha_emision"),
                         r.getDate("fecha_vencimiento")));
-                id.setCellValueFactory(new PropertyValueFactory<>("id"));
+                id2.setCellValueFactory(new PropertyValueFactory<>("id"));
                 System.out.println(r.getString("id"));
-                propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-                placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-                marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-                modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-                color.setCellValueFactory(new PropertyValueFactory<>("color"));
-                persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                propietario2.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas2.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca2.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo2.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color2.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona2.setCellValueFactory(new PropertyValueFactory<>("puesto"));
                 emision.setCellValueFactory(new PropertyValueFactory<>("fecha_emision"));
                 vencimiento.setCellValueFactory(new PropertyValueFactory<>("fecha_vencimiento"));
             }
             stm.close();
-            tablita.refresh();
+            tabla2.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -667,6 +669,7 @@ public class nuevoController implements Initializable {
         actualizar();
         refrescar();
         saludos();
+        actualizarTotal();
     }
 
 }
