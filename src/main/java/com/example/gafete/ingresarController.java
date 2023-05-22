@@ -17,13 +17,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ingresarController implements Initializable {
-    @FXML
-    private ImageView agregarImagen;
-    @FXML
-    private ImageView editarImagen;
-    @FXML
-    private ImageView tec;
+public class ingresarController  implements Initializable{
     @FXML
     private TextField txtNombreA;
     @FXML
@@ -45,10 +39,7 @@ public class ingresarController implements Initializable {
     private Button btnSalirA;
     @FXML
     private ComboBox<personal> comPersona;
-    @FXML
-    private DatePicker fechaV;
-    @FXML
-    private DatePicker fechaE;
+
     private ObservableList<personal> lista;
 
     @FXML
@@ -71,9 +62,6 @@ public class ingresarController implements Initializable {
                         txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
                         comPersona.getSelectionModel().getSelectedItem().toString() + "')";
                 stm.executeUpdate(sql);
-               String sql1 = "INSERT INTO gafetes VALUES (0, 3, null,'" + fechaV.getValue() + "')";
-                stm.execute(sql1);
-                System.out.println("DATOS INSERTADOS EN persona");
 
 
                 Stage stage = new Stage();//Crear una nueva ventana
@@ -96,16 +84,8 @@ public class ingresarController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*
-        txtPersonaA.setText("");
-            txtColor.setText("");
-            txtNombreA.setText("");
-            txtModeloA.setText("");
-            txtMarcaA.setText("");
-            txtMatriculaA.setText("");
-         */
-        //Stage cerrar = (Stage) btnG.getScene().getWindow();
-       // cerrar.close();
+
+
     }
 
     @FXML

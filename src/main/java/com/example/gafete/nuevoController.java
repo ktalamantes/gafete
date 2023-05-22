@@ -69,6 +69,7 @@ public class nuevoController implements Initializable {
     @FXML
     private TableColumn vencimiento;
 
+
     @FXML private TextField prop;
     @FXML private TextField mar;
     @FXML private TextField mod;
@@ -78,7 +79,11 @@ public class nuevoController implements Initializable {
     @FXML
     private Button siguiente;
     @FXML
+    private Button siguiente1;
+    @FXML
     private Button genPdf;
+    @FXML
+    private Button genPdf1;
     @FXML
     private Label lPersona;
     @FXML
@@ -86,7 +91,11 @@ public class nuevoController implements Initializable {
     @FXML
     private Button btnEliminar;
     @FXML
+    private Button btnEliminar1;
+    @FXML
     private Button btnFecha;
+    @FXML
+    private Button btnFecha1;
     @FXML
     private Tab tabEditar;
     @FXML
@@ -111,7 +120,9 @@ public class nuevoController implements Initializable {
     @FXML
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
+    private ConsultaPersonas idC;
     private Consulta tmpConsulta;
+    private ConsultaPersonas tmpConsu;
     private ConsultaFecha tmpConsultaF;
     private ConsultaFecha idF;
 
@@ -119,6 +130,7 @@ public class nuevoController implements Initializable {
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
     ObservableList<ConsultaTotal> listaT = FXCollections.observableArrayList();
+    ObservableList<ConsultaPersonas> listaP = FXCollections.observableArrayList();
 
 
 
@@ -140,21 +152,7 @@ public class nuevoController implements Initializable {
         }//catch
     }//Imagen Agregar
 
-    //------------METODO QUE ABRE "AGREGAR" DANDO CLICK EN IMAGEN-------------------
-    @FXML
-    public void imagenCuenta(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Agregar.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("cuenta");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
 
-        }//catch
-    }//Imagen cuenta
 
     //-------------BOTON QUE PERMITE EDITAR USUARIO/S
 
@@ -219,18 +217,19 @@ public class nuevoController implements Initializable {
 
     @FXML
     public void btnVencimiento(ActionEvent evt){
-        tabGeneral.getSelectionModel().select(0);
+        tabGeneral.getSelectionModel().select(3);
         try{
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
             String sql = "INSERT INTO gafetes VALUES (0,'" + txtEId.getText() + "', null,'" +
                     fechaV.getValue() + "')";
-            stm.execute(sql);
+            stm.executeLargeUpdate(sql);
             System.out.println("Datos insertados. ");
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("Error");
         }
+        refresh();
     }
 
     @FXML
@@ -265,7 +264,7 @@ public class nuevoController implements Initializable {
             iAlumnoP.setAlignment(Chunk.ALIGN_CENTER);
 
             Image iMaestro = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro1.jpg");
-            iMaestro.scaleToFit(400, 500);
+            iMaestro.scaleToFit(400, 250);
             iMaestro.setAlignment(Chunk.ALIGN_CENTER);
             //Imagen alumno posterior
             Image iMaestroP = Image.getInstance("src\\main\\resources\\com\\example\\gafete\\maestro2.jpg");
@@ -302,68 +301,61 @@ public class nuevoController implements Initializable {
 
             //Se crea metodo para agregar texto en la hoja así mismo como agregarle estilo de fuente y alineacion
             Paragraph matricula = new Paragraph();
-            matricula.setAlignment(Paragraph.ALIGN_MIDDLE);
-            matricula.add(idP.getMatricula().toUpperCase());
-            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
-
-            Paragraph marca = new Paragraph();
             matricula.setAlignment(Paragraph.ALIGN_CENTER);
-            matricula.add("\n\n"+idP.getMarca().toUpperCase()+"/");
-            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
-
-            Paragraph modelo = new Paragraph();
-            matricula.setAlignment(Paragraph.ALIGN_CENTER);
+            matricula.add("\n\n\n\n\n  "+idP.getMatricula().toUpperCase());
+            matricula.add("\n\n\n"+idP.getMarca().toUpperCase()+"/");
             matricula.add(idP.getModelo().toUpperCase());
-            matricula.setFont(FontFactory.getFont("Tahoma",18,Font.BOLD,BaseColor.BLACK));
+            matricula.setFont(FontFactory.getFont("Tahoma",14,Font.BOLD,BaseColor.BLACK));
 
             //---------------------prueba-------------------
 
 
             //Se crean if para saber si el puesto es de cada departamento
             if(idP.getPuesto().equals("Alumno")){
-                /*
                 documento.open();
+                iAlumnoF.setAbsolutePosition(80f, 600f);
+                iAlumnoP.setAbsolutePosition(80f, 300f);
                 documento.add(iAlumnoF);
                 documento.add(iAlumnoP);
                 documento.add(matricula);
-                documento.add(marca);
-                documento.add(modelo);
-                 */
-                //documento.newPage();
-                documento.open();
-                iAlumnoF.setAbsolutePosition(150f, 500f);
-                documento.add(iAlumnoF);
-                documento.add(matricula);
-                documento.add(marca);
-                documento.add(modelo);
+                //documento.add(marca);
+                //documento.add(modelo);
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
+                iMaestro.setAbsolutePosition(80f, 600f);
+                iMaestroP.setAbsolutePosition(80f, 300f);
                 documento.add(iMaestro);
                 documento.add(iMaestroP);
-                documento.add(marca);
-                documento.add(modelo);
+                //documento.add(marca);
+                //documento.add(modelo);
                 documento.add(matricula);
             } else if (idP.getPuesto().equals("Administrativo")) {
                 documento.open();
+                iAdministrativo.setAbsolutePosition(80f, 600f);
+                iAdministrativoP.setAbsolutePosition(80f, 300f);
                 documento.add(iAdministrativo);
                 documento.add(iAdministrativoP);
                 documento.add(matricula);
-                documento.add(marca);
-                documento.add(modelo);
+                //documento.add(marca);
+                //documento.add(modelo);
             } else if (idP.getPuesto().equals("Cafeteria")) {
                 documento.open();
+                iAlumnoF.setAbsolutePosition(80f, 600f);
+                iAlumnoP.setAbsolutePosition(80f, 300f);
                 documento.add(iCafe);
                 documento.add(iCafeP);
                 documento.add(matricula);
-                documento.add(marca);
-                documento.add(modelo);
+                //documento.add(marca);
+                //documento.add(modelo);
             } else if (idP.getPuesto().equals("Gastronomia")) {
                 documento.open();
+                iGasF.setAbsolutePosition(80f, 600f);
+                iGasP.setAbsolutePosition(80f, 300f);
                 documento.add(iGasF);
                 documento.add(iGasP);
                 documento.add(matricula);
-                documento.add(marca);
-                documento.add(modelo);
+                //documento.add(marca);
+                //documento.add(modelo);
             } 
 
 
@@ -449,7 +441,6 @@ public class nuevoController implements Initializable {
 
     //METODO PARA SELECCIONAR EN LA TABLA SOLICITANTES
     int idSolicitantes;
-    int idFSolicitantes;
     @FXML
     public void ClickTablaSolicitantes(MouseEvent evt) {
         if (evt.getClickCount() >= 1) {
@@ -464,6 +455,12 @@ public class nuevoController implements Initializable {
             btnFecha.setDisable(false);
         }
     }
+
+    //-----------------------------------------PRUEBA----------------------------------------
+
+
+
+    //-------------------------------------FIN PRUEBA------------------------------------------
 
 
     @FXML
@@ -573,6 +570,45 @@ public class nuevoController implements Initializable {
         //tabla.refresh();
     }
 
+    @FXML
+    private void refresh(){
+        try {
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM registros INNER JOIN gafetes ON registros.id = gafetes.id";
+            //String sql = "SELECT * FROM automovil INNER JOIN persona ON automovil.id = persona.id";
+            ResultSet r = stm.executeQuery(sql);
+            listaT.clear();
+            while (r.next()){
+                tabla2.setItems(listaT);
+                listaT.add(new ConsultaTotal(r.getInt("id"),
+                        r.getString("nombre"),
+                        r.getString("matricula"),
+                        r.getString("marca"),
+                        r.getString("modelo"),
+                        r.getString("color"),
+                        r.getString("puesto"),
+                        r.getDate("fecha_emision"),
+                        r.getDate("fecha_vencimiento")));
+                id2.setCellValueFactory(new PropertyValueFactory<>("id"));
+                System.out.println(r.getString("id"));
+                propietario2.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                placas2.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                marca2.setCellValueFactory(new PropertyValueFactory<>("marca"));
+                modelo2.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+                color2.setCellValueFactory(new PropertyValueFactory<>("color"));
+                persona2.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                emision.setCellValueFactory(new PropertyValueFactory<>("fecha_emision"));
+                vencimiento.setCellValueFactory(new PropertyValueFactory<>("fecha_vencimiento"));
+            }
+            stm.close();
+            tabla2.refresh();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //tabla.refresh();
+    }
+
 
 
     //------------------------FIN BASE DE DATOS--------------------------------
@@ -581,44 +617,7 @@ public class nuevoController implements Initializable {
 
 
     //EDITAR DANDO DOBLE CLICK
-    public void dobleclick(MouseEvent mevt){
-        if(mevt.getClickCount()>2){
-            if(tablita.getSelectionModel().getSelectedItem()!=null){
-                try{
-                    Stage stage = new Stage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("editar.fxml"));
-                    Scene scene = new Scene(loader.load());
-                    stage.setScene(scene);
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    editarController ec = loader.getController();
-                    Consulta cdb = (Consulta) tablita.getSelectionModel().getSelectedItem();
-                    ec.setId(cdb.getId());
-                    try{
-                        Connection c = Enlace.getConexion();
-                        Statement stm = c.createStatement();
-                        String sql = "SELECT * FROM registros WHERE id = '"+cdb.getId()+"';";
-                        ResultSet r = stm.executeQuery(sql);
 
-                        while (r.next()){
-
-                            prop.setText(r.getString("prop"));
-                            mar.setText(r.getString("mar"));
-                            mod.setText(r.getString("mod"));
-                            pla.setText(r.getString("pla"));
-                            per.setText(r.getString("per"));
-
-                        }
-                        stm.close();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    stage.show();
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
     @FXML
     public void buscarMatricula(KeyEvent evt) {
