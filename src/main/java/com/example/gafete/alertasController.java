@@ -16,6 +16,8 @@ public class alertasController implements Initializable {
     private Button btnDescargaR;
     @FXML
     private Button btnEditar;
+    @FXML
+    private Button btnElimarA;
 
 
     @FXML
@@ -33,6 +35,12 @@ public class alertasController implements Initializable {
     @FXML
     protected void btnEditarA(){
         Stage s = (Stage) btnEditar.getScene().getWindow();
+        s.close();
+    }
+
+    @FXML
+    protected void btnElimarA(){
+        Stage s = (Stage) btnElimarA.getScene().getWindow();
         s.close();
     }
 

@@ -21,8 +21,6 @@ public class ingresarController  implements Initializable{
     @FXML
     private TextField txtNombreA;
     @FXML
-    private TextField txtPersonaA;
-    @FXML
     private TextField txtMatriculaA;
     @FXML
     private TextField txtMarcaA;
@@ -33,8 +31,7 @@ public class ingresarController  implements Initializable{
     @FXML
     private Button btnG;
 
-    @FXML
-    private Button btnUsuario;
+
     @FXML
     private Button btnSalirA;
     @FXML

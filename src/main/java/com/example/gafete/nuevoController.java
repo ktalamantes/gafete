@@ -70,34 +70,17 @@ public class nuevoController implements Initializable {
     private TableColumn vencimiento;
 
 
-    @FXML private TextField prop;
-    @FXML private TextField mar;
-    @FXML private TextField mod;
-    @FXML private TextField pla;
-    @FXML private TextField per;
     @FXML private TextField buscar;
     @FXML
     private Button siguiente;
     @FXML
-    private Button siguiente1;
-    @FXML
     private Button genPdf;
-    @FXML
-    private Button genPdf1;
     @FXML
     private Label lPersona;
     @FXML
-    private Button btnCerrarLogin;
-    @FXML
     private Button btnEliminar;
     @FXML
-    private Button btnEliminar1;
-    @FXML
     private Button btnFecha;
-    @FXML
-    private Button btnFecha1;
-    @FXML
-    private Tab tabEditar;
     @FXML
     private TabPane tabGeneral;
     @FXML
@@ -114,23 +97,27 @@ public class nuevoController implements Initializable {
     private DatePicker fechaV;
     @FXML
     private TextField txtEId;
+    //TextField ver
+    @FXML
+    private TextField txtVerNombre;
+    @FXML
+    private TextField txtVerMatricula;
+
+
 
 
 
     @FXML
     private ComboBox<personal> txtEPersona;
     private Consulta idP;
-    private ConsultaPersonas idC;
     private Consulta tmpConsulta;
-    private ConsultaPersonas tmpConsu;
-    private ConsultaFecha tmpConsultaF;
-    private ConsultaFecha idF;
+
 
     private ObservableList<personal> lista;
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
     ObservableList<ConsultaTotal> listaT = FXCollections.observableArrayList();
-    ObservableList<ConsultaPersonas> listaP = FXCollections.observableArrayList();
+
 
 
 
@@ -241,6 +228,8 @@ public class nuevoController implements Initializable {
             String sql1 = "SELECT * FROM registros WHERE id= " + idSolicitantes;
             stm.executeQuery(sql1);
             txtEId.setText(String.valueOf(idP.getId()));
+            txtVerNombre.setText(idP.getNombre());
+            txtVerMatricula.setText(idP.getMatricula());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -307,7 +296,7 @@ public class nuevoController implements Initializable {
             matricula.add(idP.getModelo().toUpperCase());
             matricula.setFont(FontFactory.getFont("Tahoma",14,Font.BOLD,BaseColor.BLACK));
 
-            //---------------------prueba-------------------
+
 
 
             //Se crean if para saber si el puesto es de cada departamento
@@ -318,16 +307,14 @@ public class nuevoController implements Initializable {
                 documento.add(iAlumnoF);
                 documento.add(iAlumnoP);
                 documento.add(matricula);
-                //documento.add(marca);
-                //documento.add(modelo);
+
             } else if (idP.getPuesto().equals("Maestro")) {
                 documento.open();
                 iMaestro.setAbsolutePosition(80f, 600f);
                 iMaestroP.setAbsolutePosition(80f, 300f);
                 documento.add(iMaestro);
                 documento.add(iMaestroP);
-                //documento.add(marca);
-                //documento.add(modelo);
+
                 documento.add(matricula);
             } else if (idP.getPuesto().equals("Administrativo")) {
                 documento.open();
@@ -336,8 +323,7 @@ public class nuevoController implements Initializable {
                 documento.add(iAdministrativo);
                 documento.add(iAdministrativoP);
                 documento.add(matricula);
-                //documento.add(marca);
-                //documento.add(modelo);
+
             } else if (idP.getPuesto().equals("Cafeteria")) {
                 documento.open();
                 iAlumnoF.setAbsolutePosition(80f, 600f);
@@ -345,8 +331,7 @@ public class nuevoController implements Initializable {
                 documento.add(iCafe);
                 documento.add(iCafeP);
                 documento.add(matricula);
-                //documento.add(marca);
-                //documento.add(modelo);
+
             } else if (idP.getPuesto().equals("Gastronomia")) {
                 documento.open();
                 iGasF.setAbsolutePosition(80f, 600f);
@@ -358,30 +343,11 @@ public class nuevoController implements Initializable {
                 //documento.add(modelo);
             } 
 
-
-
-
-            /*
-            PdfPTable tabla = new PdfPTable(3);
-            //tabla.getHorizontalAlignment();
-            tabla.addCell("");
-            tabla.addCell("");
-            tabla.addCell("");
-            //tabla.setHorizontalAlignment(1);
-             */
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
                 String sql = "SELECT matricula, marca, modelo FROM registros WHERE id =" + idSolicitantes;
                 ResultSet r = stm.executeQuery(sql);
-                if(r.next()){
-                    do{
-                        //tabla.addCell(r.getString(1));
-                        //tabla.addCell(r.getString(2));
-                        //tabla.addCell(r.getString(3));
-                    }while (r.next());
-                    //documento.add(tabla);
-                }
 
             }catch (SQLException e){
                 //e.printStackTrace();
@@ -392,7 +358,7 @@ public class nuevoController implements Initializable {
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioDescargaLista.fxml"));
             Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
+            stage.setTitle("");
             stage.setScene(escena);
             stage.showAndWait();
         }catch (DocumentException | FileNotFoundException e){
@@ -417,22 +383,20 @@ public class nuevoController implements Initializable {
     @FXML
     public void eliminarPersona(ActionEvent evt){
        try{
-           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-           alert.setHeaderText(null);
-           alert.setTitle("Confirmacion");
-           alert.setContentText("¿Deseas realmente confirmar?");
-           alert.showAndWait();
-           if(alert.equals("")){
-               if(idP != null){
-                   lista2.remove(idP);
-                   Connection c = Enlace.getConexion();
-                   Statement stm = c.createStatement();
-                   String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
-                   stm.executeLargeUpdate(sql);
-               }
-               System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
+           if(idP != null){
+               lista2.remove(idP);
+               Connection c = Enlace.getConexion();
+               Statement stm = c.createStatement();
+               String sql = "DELETE FROM registros WHERE id= " + idSolicitantes;
+               stm.executeLargeUpdate(sql);
            }
-
+           System.out.println("Se ha eliminado a la matricula: " + idP.getMatricula());
+           Stage stage = new Stage();//Crear una nueva ventana
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioEliminado.fxml"));
+           Scene escena = new Scene(loader.load());
+           stage.setTitle(""+idP.getMatricula());
+           stage.setScene(escena);
+           stage.showAndWait();
        }catch (Exception e){
            e.printStackTrace();
        }
@@ -612,11 +576,6 @@ public class nuevoController implements Initializable {
 
 
     //------------------------FIN BASE DE DATOS--------------------------------
-
-
-
-
-    //EDITAR DANDO DOBLE CLICK
 
 
     @FXML

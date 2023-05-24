@@ -29,49 +29,24 @@ import java.util.ResourceBundle;
 
 public class HelloController  {
     @FXML
-    private ImageView agregarImagen;
-    @FXML
-    private ImageView editarImagen;
-    @FXML
-    private ImageView tec;
-    @FXML
-    private TextField txtNombreA;
-    @FXML
-    private TextField txtPersonaA;
-    @FXML
-    private TextField txtMatriculaA;
-    @FXML
-    private TextField txtMarcaA;
-    @FXML
-    private TextField txtModeloA;
-    @FXML
-    private TextField txtColor;
-    @FXML
-    private Button btnG;
-    @FXML
     private Button btnUsuario;
     @FXML
-    private Button btnSalirA;
-
+    private Button btnSalirB;
 
 
 
     @FXML
-    private void mostrarAlertInfo(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle("Info");
-        alert.setContentText("Informacion sobre la aplicación");
-        alert.showAndWait();
-    }
+    protected void btnSalirAgregar(){
+        Stage s = (Stage) btnSalirB.getScene().getWindow();
+        s.close();
+    }//boton salirAgregar
+
 
     @FXML
     protected void btnAgregar(){
         try {
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarUsuario.fxml"));
-            //Stage cerrar = (Stage) btnUsuario.getScene().getWindow();
-            //cerrar.close();
             Scene escena = new Scene(loader.load());
             stage.setTitle("editar");
             stage.setScene(escena);
@@ -83,19 +58,7 @@ public class HelloController  {
         cerrar.close();
     }//boton agregar
 
-    @FXML
-    protected void btnEditar(){
-        try {
-            Stage stage = new Stage();//Crear una nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("editar.fxml"));
-            Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
-            stage.setScene(escena);
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }//catch
-    }//Boton editar
+
 
 
 
