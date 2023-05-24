@@ -154,10 +154,11 @@ public class nuevoController implements Initializable {
 
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
-            String sql = "UPDATE registros SET nombre='"+ tmpConsulta.getNombre()+  "',matricula='" + tmpConsulta.getMatricula() + "',marca='" + tmpConsulta.getMarca() +
-            "',modelo='" + tmpConsulta.getModelo() + "',color='" + tmpConsulta.getColor() + "',puesto='" + tmpConsulta.getPuesto() + "'WHERE id=" + idSolicitantes ;
-            //System.out.println("CAMBIOS GUARDADOS ");
+
+            String sql = "UPDATE registros SET nombre='"+ tmpConsulta.getNombre() + "',matricula='" + tmpConsulta.getMatricula() + "',marca='" + tmpConsulta.getMarca() + "',modelo='" + tmpConsulta.getModelo() + "',color='" + tmpConsulta.getColor() + "',puesto='" + txtEPersona.getSelectionModel().getSelectedItem().toString() + "'WHERE id=" + idSolicitantes;
             stm.execute(sql);
+            //System.out.println("CAMBIOS GUARDADOS ");
+
            refrescar();
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioEditar.fxml"));
