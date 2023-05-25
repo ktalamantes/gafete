@@ -41,6 +41,31 @@ public class HelloController  {
         s.close();
     }//boton salirAgregar
 
+    //Boton que abre menú ayuda
+    @FXML
+    public void abrirManualDeAyuda()throws Exception{
+        String direccion = System.getProperty("user.dir") +
+                "\\src\\main\\resources\\com\\example\\gafete\\COMPUTADORAS.pdf";
+        ProcessBuilder archivo = new ProcessBuilder();
+
+        archivo.command("cmd.exe","/c", direccion);
+        archivo.start();
+    }
+
+    @FXML
+    public void abrirCreditos(){
+        try{
+            Stage stage = new Stage();//Crear una nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("creditos.fxml"));
+            Scene escena = new Scene(loader.load());
+            stage.setTitle("");
+            stage.setScene(escena);
+            stage.showAndWait();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     protected void btnAgregar(){

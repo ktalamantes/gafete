@@ -22,12 +22,12 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="170.0" layoutY="104.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-border-color: GRAY;" text="AYUDA">
+      <Button layoutX="170.0" layoutY="104.0" mnemonicParsing="false" onAction="#abrirManualDeAyuda" prefHeight="26.0" prefWidth="62.0" style="-fx-border-color: GRAY;" text="AYUDA">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="43.0" layoutY="104.0" mnemonicParsing="false" style="-fx-border-color: GRAY;" text="CRÉDITOS">
+      <Button layoutX="43.0" layoutY="104.0" mnemonicParsing="false" onAction="#abrirCreditos" style="-fx-border-color: GRAY;" text="CRÉDITOS">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -16,7 +16,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -163,7 +162,7 @@ public class nuevoController implements Initializable {
             Stage stage = new Stage();//Crear una nueva ventana
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anuncioEditar.fxml"));
             Scene escena = new Scene(loader.load());
-            stage.setTitle("editar");
+            stage.setTitle("");
             stage.setScene(escena);
             stage.showAndWait();
         }catch (Exception e){
@@ -174,7 +173,11 @@ public class nuevoController implements Initializable {
     @FXML
     protected void btnSalirEditar(){
         tabGeneral.getSelectionModel().select(0);
-
+        txtEPropietario.setText("");
+        txtEMarca.setText("");
+        txtEModelo.setText("");
+        txtEPlaca.setText("");
+        txtEPersona.getSelectionModel().getSelectedItem();
     }//boton salir Editar
 
 
@@ -236,7 +239,7 @@ public class nuevoController implements Initializable {
         }
     }
     @FXML
-    public void sigueintePDF(){
+    public void siguientePDF(){
         //tabGeneral.getSelectionModel().select(2);
         Document documento = new Document(PageSize.A4);
         try{

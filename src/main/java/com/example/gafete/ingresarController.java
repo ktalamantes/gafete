@@ -92,6 +92,8 @@ public class ingresarController  implements Initializable{
     }//boton salirAgregar
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lista= FXCollections.observableArrayList();

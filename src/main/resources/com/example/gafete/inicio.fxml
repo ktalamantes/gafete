@@ -29,23 +29,18 @@
                         <Image url="@../../../ini.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="buscar" alignment="CENTER" layoutX="297.0" layoutY="126.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-background-radius: 20;" />
-                  <Text layoutX="411.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENERAR GAFETE">
+                  <TextField fx:id="buscar" alignment="CENTER" layoutX="418.0" layoutY="114.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-background-radius: 20;" />
+                  <Text layoutX="193.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENERAR GAFETE">
                      <font>
                         <Font name="Brush Script MT Italic" size="26.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="309.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../lupa.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="785.0" layoutY="118.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="299.4686866760253">
+                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="885.0" layoutY="106.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="885.0" AnchorPane.rightAnchor="199.4686866760253">
                      <image>
                         <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablita" layoutX="85.0" layoutY="204.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="342.0" prefWidth="839.0" style="-fx-border-color: black;">
+                  <TableView fx:id="tablita" layoutX="85.0" layoutY="196.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="342.0" prefWidth="839.0" style="-fx-border-color: black;">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="29.5999755859375" text="No." />
                         <TableColumn fx:id="propietario" prefWidth="302.3999824523926" text="PROPIETARIO" />
@@ -56,16 +51,16 @@
                         <TableColumn fx:id="persona" prefWidth="125.5999755859375" text="PERSONA" />
                      </columns>
                   </TableView>
-                  <Button layoutX="539.0" layoutY="133.0" mnemonicParsing="false" onAction="#refrescar" style="-fx-background-radius: 20;" text="REFRESCAR" />
-                  <Button fx:id="btnCerrarLogin" layoutX="649.0" layoutY="134.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="73.0" layoutX="30.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
-                  <ImageView fitHeight="48.0" fitWidth="116.0" layoutX="39.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                  <Button layoutX="661.0" layoutY="121.0" mnemonicParsing="false" onAction="#refrescar" style="-fx-background-radius: 20;" text="REFRESCAR" />
+                  <Button fx:id="btnCerrarLogin" layoutX="768.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="73.0" layoutX="27.0" layoutY="89.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
+                  <ImageView fitHeight="48.0" fitWidth="116.0" layoutX="39.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@tecnologicoJalisco-removebg-preview.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="siguiente" disable="true" layoutX="764.0" layoutY="578.0" mnemonicParsing="false" onAction="#siguienteEditar" text="EDITAR" />
-                  <Button fx:id="genPdf" disable="true" layoutX="597.0" layoutY="578.0" mnemonicParsing="false" onAction="#sigueintePDF" text="PDF" />
+                  <Button fx:id="genPdf" disable="true" layoutX="597.0" layoutY="578.0" mnemonicParsing="false" onAction="#siguientePDF" text="PDF" />
                   <Button fx:id="btnEliminar" disable="true" layoutX="842.0" layoutY="578.0" mnemonicParsing="false" onAction="#eliminarPersona" text="ELIMINAR" />
                   <Button fx:id="btnFecha" disable="true" layoutX="653.0" layoutY="578.0" mnemonicParsing="false" onAction="#agregarFecha" text="VENCIMIENTO" />
                   <Label fx:id="lSaludo" layoutX="859.0" layoutY="84.0" prefHeight="20.0" prefWidth="110.0">
@@ -74,7 +69,6 @@
                      </font>
                   </Label>
                   <Separator layoutY="185.0" prefHeight="3.0" prefWidth="1010.0" />
-                  <Separator layoutX="199.0" layoutY="65.0" orientation="VERTICAL" prefHeight="120.0" prefWidth="1.0" />
                   <Separator layoutY="564.0" prefHeight="3.0" prefWidth="1010.0" />
                   <Separator layoutX="574.0" layoutY="565.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
                </children>
@@ -138,13 +132,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnCerrarLogin1" layoutX="766.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="38.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
-                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="47.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="btnCerrarLogin1" layoutX="704.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
                   <Label layoutX="433.0" layoutY="119.0" text="EDITANDO USUARIO">
                      <font>
                         <Font size="20.0" />
@@ -153,6 +141,18 @@
                   <ImageView fitHeight="88.0" fitWidth="76.0" layoutX="337.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../editar.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="73.0" layoutX="28.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
+                  <ImageView fitHeight="48.0" fitWidth="116.0" layoutX="40.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutY="181.0" prefHeight="3.0" prefWidth="1010.0" />
+                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="870.0" layoutY="106.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
                </children>
@@ -167,13 +167,7 @@
                         <Image url="@../../../ini.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnCerrarLogin2" layoutX="776.0" layoutY="130.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="34.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
-                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="43.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="btnCerrarLogin2" layoutX="722.0" layoutY="118.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
                   <AnchorPane layoutX="72.0" layoutY="228.0" prefHeight="350.0" prefWidth="853.0" style="-fx-background-color: #D7E5FA; -fx-border-color: BLACK;">
                      <children>
                         <Pane opacity="0.33" prefHeight="44.0" prefWidth="855.0" style="-fx-background-color: #C0B7FA;">
@@ -209,14 +203,26 @@
                         <TextField fx:id="txtVerMatricula" disable="true" layoutX="486.0" layoutY="151.0" prefHeight="26.0" prefWidth="108.0" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="405.0" layoutY="126.0" text="VENCIMIENTO DEL GAFETE">
+                  <Label layoutX="367.0" layoutY="113.0" text="VENCIMIENTO DEL GAFETE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="115.0" fitWidth="80.0" layoutX="304.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="115.0" fitWidth="80.0" layoutX="230.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@carnet-de-identidad.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="73.0" layoutX="22.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
+                  <ImageView fitHeight="48.0" fitWidth="116.0" layoutX="34.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutY="195.0" prefHeight="3.0" prefWidth="1010.0" />
+                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="881.0" layoutY="103.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
@@ -244,19 +250,30 @@
                         <TableColumn fx:id="vencimiento" prefWidth="97.5999755859375" text="VENCIMIENTO" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btnCerrarLogin3" layoutX="710.0" layoutY="124.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="86.0" layoutX="52.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
-                  <ImageView fitHeight="69.0" fitWidth="146.0" layoutX="61.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="359.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAFETE DE VEHICULOS">
+                  <Button fx:id="btnCerrarLogin3" layoutX="746.0" layoutY="111.0" mnemonicParsing="false" onAction="#cerrarSql" style="-fx-background-radius: 20;" text="CERRAR SESIÓN" />
+                  <Text layoutX="386.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VER GAFETES">
                      <font>
                         <Font name="Brush Script MT Italic" size="26.0" />
                      </font>
                   </Text>
-                  <Button layoutX="608.0" layoutY="124.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 20;" text="REFRESCAR" />
+                  <Button layoutX="648.0" layoutY="111.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 20;" text="REFRESCAR" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0e4e7" height="73.0" layoutX="20.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
+                  <ImageView fitHeight="48.0" fitWidth="116.0" layoutX="32.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@tecnologicoJalisco-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="2.0" layoutY="175.0" prefHeight="3.0" prefWidth="1010.0" />
+                  <ImageView fitHeight="115.0" fitWidth="80.0" layoutX="270.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@carnet-de-identidad.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="881.0" layoutY="96.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../menu.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
         </content>
