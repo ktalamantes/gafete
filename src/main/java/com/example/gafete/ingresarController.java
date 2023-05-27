@@ -29,6 +29,8 @@ public class ingresarController  implements Initializable{
     @FXML
     private TextField txtColor;
     @FXML
+    private TextField txtAnioA;
+    @FXML
     private Button btnG;
 
 
@@ -57,7 +59,7 @@ public class ingresarController  implements Initializable{
             if(m.matches()) {
                 String sql = "INSERT INTO registros VALUES (0, '" + txtNombreA.getText() + "','" +matricula + "','" +
                         txtMarcaA.getText() + "','" + txtModeloA.getText() + "','" + txtColor.getText() + "','" +
-                        comPersona.getSelectionModel().getSelectedItem().toString() + "')";
+                        comPersona.getSelectionModel().getSelectedItem().toString() + "','"+ txtAnioA.getText()+ "')";
                 stm.executeUpdate(sql);
 
 

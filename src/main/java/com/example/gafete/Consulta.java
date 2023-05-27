@@ -1,6 +1,7 @@
 package com.example.gafete;
 
 import java.sql.Date;
+import java.time.Year;
 
 public class Consulta {
     private int id;
@@ -10,9 +11,10 @@ public class Consulta {
     private String modelo;
     private String color;
     private String puesto;
+    private int año;
 
 
-    public Consulta(int id, String nombre, String matricula, String marca, String modelo, String color, String puesto) {
+    public Consulta(int id, String nombre, String matricula, String marca, String modelo, String color, String puesto, int año) {
         this.id = id;
         this.nombre = nombre;
         this.matricula = matricula;
@@ -20,9 +22,17 @@ public class Consulta {
         this.modelo = modelo;
         this.color = color;
         this.puesto = puesto;
+        this.año = año;
 
     }
 
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
 
     public int getId() {
         return id;

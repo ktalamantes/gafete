@@ -40,7 +40,7 @@
                         <Image url="@../../../menu.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablita" layoutX="85.0" layoutY="196.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="342.0" prefWidth="839.0" style="-fx-border-color: black;">
+                  <TableView fx:id="tablita" layoutX="52.0" layoutY="212.0" onMouseClicked="#ClickTablaSolicitantes" prefHeight="342.0" prefWidth="894.0" style="-fx-border-color: black;">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="29.5999755859375" text="No." />
                         <TableColumn fx:id="propietario" prefWidth="302.3999824523926" text="PROPIETARIO" />
@@ -49,6 +49,7 @@
                         <TableColumn fx:id="modelo" prefWidth="104.00006103515625" text="MODELO" />
                         <TableColumn fx:id="color" prefWidth="84.79998779296875" text="COLOR" />
                         <TableColumn fx:id="persona" prefWidth="125.5999755859375" text="PERSONA" />
+                        <TableColumn fx:id="anio" prefWidth="56.800048828125" text="AÑO" />
                      </columns>
                   </TableView>
                   <Button layoutX="661.0" layoutY="121.0" mnemonicParsing="false" onAction="#refrescar" style="-fx-background-radius: 20;" text="REFRESCAR" />

@@ -64,6 +64,8 @@ public class nuevoController implements Initializable {
     @FXML
     private TableColumn persona;
     @FXML
+    private TableColumn anio;
+    @FXML
     private TableColumn emision;
     @FXML
     private TableColumn vencimiento;
@@ -240,7 +242,6 @@ public class nuevoController implements Initializable {
     }
     @FXML
     public void siguientePDF(){
-        //tabGeneral.getSelectionModel().select(2);
         Document documento = new Document(PageSize.A4);
         try{
             String ruta = System.getProperty("user.home");
@@ -448,7 +449,8 @@ public class nuevoController implements Initializable {
                         r.getString("marca"),
                         r.getString("modelo"),
                         r.getString("color"),
-                        r.getString("puesto")));
+                        r.getString("puesto"),
+                        r.getInt("año")));
                 id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 System.out.println(r.getString("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -457,6 +459,7 @@ public class nuevoController implements Initializable {
                 modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                anio.setCellValueFactory(new PropertyValueFactory<>("año"));
             }
             stm.execute(sql);
             //tablita.refresh();
@@ -481,7 +484,8 @@ public class nuevoController implements Initializable {
                         r.getString("marca"),
                         r.getString("modelo"),
                         r.getString("color"),
-                        r.getString("puesto")));
+                        r.getString("puesto"),
+                        r.getInt("año")));
                 id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 System.out.println(r.getString("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -490,6 +494,7 @@ public class nuevoController implements Initializable {
                 modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                anio.setCellValueFactory(new PropertyValueFactory<>("año"));
             }
             stm.close();
             tablita.refresh();
@@ -594,7 +599,8 @@ public class nuevoController implements Initializable {
                 tablita.setItems(lista2);
                 lista2.add(new Consulta(r.getInt("id"), r.getString("Nombre"),
                         r.getString("matricula"), r.getString("marca"),
-                        r.getString("modelo"), r.getString("color"), r.getString("puesto")));
+                        r.getString("modelo"), r.getString("color"), r.getString("puesto"),
+                        r.getInt("año")));
                 id.setCellValueFactory(new PropertyValueFactory<>("id"));
                 propietario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
                 placas.setCellValueFactory(new PropertyValueFactory<>("matricula"));
@@ -602,6 +608,7 @@ public class nuevoController implements Initializable {
                 modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
                 color.setCellValueFactory(new PropertyValueFactory<>("color"));
                 persona.setCellValueFactory(new PropertyValueFactory<>("puesto"));
+                anio.setCellValueFactory(new PropertyValueFactory<>("año"));
 
             }
             stm.execute(sql);
