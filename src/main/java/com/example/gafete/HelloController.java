@@ -45,7 +45,7 @@ public class HelloController  {
     @FXML
     public void abrirManualDeAyuda()throws Exception{
         String direccion = System.getProperty("user.dir") +
-                "\\src\\main\\resources\\com\\example\\gafete\\COMPUTADORAS.pdf";
+                "\\src\\main\\resources\\com\\example\\gafete\\MANUAL DE USUARIO.pdf";
         ProcessBuilder archivo = new ProcessBuilder();
 
         archivo.command("cmd.exe","/c", direccion);
