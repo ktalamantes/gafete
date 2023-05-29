@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1010.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
+<TabPane fx:id="tabGeneral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1010.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gafete.nuevoController">
   <tabs>
     <Tab text="GAFETE">
          <content>
@@ -158,7 +158,7 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" layoutX="708.0" layoutY="188.0" prefHeight="38.0" prefWidth="59.0" style="-fx-border-color: GRAY;">
+                        <TextField fx:id="txtEAño" alignment="CENTER" layoutX="708.0" layoutY="188.0" prefHeight="38.0" prefWidth="59.0" style="-fx-border-color: GRAY;">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -168,7 +168,7 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" layoutX="425.0" layoutY="188.0" prefHeight="37.0" prefWidth="134.0" style="-fx-border-color: GRAY;">
+                        <TextField fx:id="txtEColor" alignment="CENTER" layoutX="425.0" layoutY="188.0" prefHeight="37.0" prefWidth="134.0" style="-fx-border-color: GRAY;">
                            <font>
                               <Font size="16.0" />
                            </font>

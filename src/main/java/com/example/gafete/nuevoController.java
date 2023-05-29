@@ -103,6 +103,10 @@ public class nuevoController implements Initializable {
     private TextField txtVerNombre;
     @FXML
     private TextField txtVerMatricula;
+    @FXML
+    private TextField txtEAño;
+    @FXML
+    private TextField txtEColor;
 
 
 
@@ -152,11 +156,13 @@ public class nuevoController implements Initializable {
             tmpConsulta.setMatricula(txtEPlaca.getText());
             tmpConsulta.setMarca(txtEMarca.getText());
             tmpConsulta.setModelo(txtEModelo.getText());
+            tmpConsulta.setColor(txtEColor.getText());
+            tmpConsulta.setAño(Integer.parseInt(txtEAño.getText()));
 
             Connection c = Enlace.getConexion();
             Statement stm = c.createStatement();
 
-            String sql = "UPDATE registros SET nombre='"+ tmpConsulta.getNombre() + "',matricula='" + tmpConsulta.getMatricula() + "',marca='" + tmpConsulta.getMarca() + "',modelo='" + tmpConsulta.getModelo() + "',color='" + tmpConsulta.getColor() + "',puesto='" + txtEPersona.getSelectionModel().getSelectedItem().toString() + "'WHERE id=" + idSolicitantes;
+            String sql = "UPDATE registros SET nombre='"+ tmpConsulta.getNombre() + "',matricula='" + tmpConsulta.getMatricula() + "',marca='" + tmpConsulta.getMarca() + "',modelo='" + tmpConsulta.getModelo() + "',color='" + tmpConsulta.getColor() + "',puesto='" + txtEPersona.getSelectionModel().getSelectedItem().toString() + "',año='" + txtEAño.getText() + "'WHERE id=" + idSolicitantes;
             stm.execute(sql);
             //System.out.println("CAMBIOS GUARDADOS ");
 
@@ -178,8 +184,10 @@ public class nuevoController implements Initializable {
         txtEPropietario.setText("");
         txtEMarca.setText("");
         txtEModelo.setText("");
+        txtEColor.setText("");
         txtEPlaca.setText("");
         txtEPersona.getSelectionModel().getSelectedItem();
+        txtEAño.setText("");
     }//boton salir Editar
 
 
@@ -199,7 +207,9 @@ public class nuevoController implements Initializable {
             txtEPropietario.setText(idP.getNombre());
             txtEMarca.setText(idP.getMarca());
             txtEModelo.setText(idP.getModelo());
+            txtEColor.setText(idP.getColor());
             txtEPlaca.setText(idP.getMatricula());
+            txtEAño.setText(String.valueOf(idP.getAño()));
             txtEPersona.getSelectionModel().getSelectedItem();
             lPersona.setText(idP.getNombre().toUpperCase());
             lPersona.setVisible(true);
