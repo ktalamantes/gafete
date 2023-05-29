@@ -31,9 +31,9 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="buscar" alignment="CENTER" layoutX="418.0" layoutY="114.0" onKeyTyped="#buscarMatricula" prefHeight="40.0" prefWidth="190.0" promptText="Buscar matricula..." style="-fx-background-radius: 20;" />
-                  <Text layoutX="193.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENERAR GAFETE">
+                  <Text layoutX="179.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENERAR GAFETE">
                      <font>
-                        <Font name="Brush Script MT Italic" size="26.0" />
+                        <Font name="Arial Italic" size="24.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="885.0" layoutY="106.0" onMousePressed="#imagenAgregar" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="885.0" AnchorPane.rightAnchor="199.4686866760253">
