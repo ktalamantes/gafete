@@ -109,6 +109,19 @@ public class nuevoController implements Initializable {
     private TextField txtEAño;
     @FXML
     private TextField txtEColor;
+    //Tabla reportes
+    @FXML
+    private TableView reportesT;
+    @FXML
+    private TableColumn idR;
+    @FXML
+    private TableColumn matriculaR;
+    @FXML
+    private TableColumn nombreR;
+    @FXML
+    private TableColumn descripcionR;
+    @FXML
+    private Button btnRealizado;
 
 
 
@@ -119,11 +132,16 @@ public class nuevoController implements Initializable {
     private Consulta idP;
     private Consulta tmpConsulta;
 
+    private reportes idRe;
+    private reportes tmpReporte;
+
+
 
     private ObservableList<personal> lista;
 
     ObservableList<Consulta> lista2 = FXCollections.observableArrayList();
     ObservableList<ConsultaTotal> listaT = FXCollections.observableArrayList();
+    ObservableList<reportes> listaR = FXCollections.observableArrayList();
 
 
 
@@ -448,11 +466,61 @@ public class nuevoController implements Initializable {
         }
     }
 
-    //-----------------------------------------PRUEBA----------------------------------------
+    //metodo selecionar reportes.
+    int idReportes;
+    @FXML
+    public void clickTablaReportes(MouseEvent evt){
+        if(evt.getClickCount() >=1){
+            idRe = (reportes) reportesT.getSelectionModel().getSelectedItem();
+            tmpReporte = idRe;
+            idReportes = idRe.getId();
+            System.out.println("Se ha selecionado el reporte");
+            System.out.println("id: " + idRe.getId());
+            btnRealizado.setDisable(false);
+        }
+    }
 
+    //Eliminar reporte
+    @FXML
+    public void elimarReporte(ActionEvent evt){
+        try{
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "DELETE FROM reportes WHERE id= " + idReportes;
+            stm.executeLargeUpdate(sql);
+            reportesR();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
-
-    //-------------------------------------FIN PRUEBA------------------------------------------
+    //Ver tabla reportes
+    @FXML
+    private void reportesR(){
+        try{
+            Connection c = Enlace.getConexion();
+            Statement stm = c.createStatement();
+            String sql = "SELECT * FROM reportes";
+            ResultSet r = stm.executeQuery(sql);
+            listaR.clear();
+            while(r.next()){
+                reportesT.setItems(listaR);
+                listaR.add(new reportes(r.getInt("id"),
+                        r.getString("matricula"),
+                        r.getString("nombre_reporta"),
+                        r.getString("descripcion")));
+                idR.setCellValueFactory(new PropertyValueFactory<>("id"));
+                System.out.println(r.getString("id"));
+                matriculaR.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+                nombreR.setCellValueFactory(new PropertyValueFactory<>("nombre_reporta"));
+                descripcionR.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+            }
+            stm.execute(sql);
+            reportesT.refresh();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
     @FXML
@@ -670,6 +738,7 @@ public class nuevoController implements Initializable {
         refrescar();
         saludos();
         actualizarTotal();
+        reportesR();
     }
 
 }

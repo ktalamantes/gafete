@@ -12,9 +12,10 @@ public class Enlace {
     public static Connection getConexion(){
         try {
             if (c==null) {
-                //String url = "jdbc:mysql://localhost:3306/gafete";
-                String url = "jdbc:mysql://65.99.252.253:3306/eduwitco_gafete";
-                c = DriverManager.getConnection(url, "eduwitco_gafete", "Gafete.098&");
+                String url = "jdbc:mysql://localhost:3306/gafete";
+                //String url = "jdbc:mysql://65.99.252.253:3306/eduwitco_gafete";
+                //c = DriverManager.getConnection(url, "eduwitco_gafete", "Gafete.098&");
+                c = DriverManager.getConnection(url, "root", "");
             }
         }catch (Exception e){
             e.printStackTrace();
