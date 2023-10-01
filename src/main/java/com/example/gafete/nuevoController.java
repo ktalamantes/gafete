@@ -4,6 +4,8 @@ import java.time.LocalTime;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -303,15 +305,19 @@ public class nuevoController implements Initializable {
             iGasP.setAlignment(Chunk.ALIGN_CENTER);
             //--------------------------------FIN CREACION DE IMAGENES--------------------------------------------------
 
+            PdfPTable tabla = new PdfPTable(1);
+            float[] columnWidths = {30f};
+            tabla.addCell(new PdfPCell(new com.itextpdf.text.Paragraph("Vencimiento")));
+            tabla.setWidths(columnWidths);
+
+
             //Se crea metodo para agregar texto en la hoja así mismo como agregarle estilo de fuente y alineacion
             Paragraph matricula = new Paragraph();
             matricula.setAlignment(Paragraph.ALIGN_CENTER);
             matricula.add("\n\n\n\n\n  "+idP.getMatricula().toUpperCase());
             matricula.add("\n\n\n"+idP.getMarca().toUpperCase()+"/");
-            matricula.add(idP.getModelo().toUpperCase());
+            matricula.add(idP.getModelo().toUpperCase()+"\n\n\n\n\n\n\n\n");
             matricula.setFont(FontFactory.getFont("Tahoma",14,Font.BOLD,BaseColor.BLACK));
-
-
 
 
             //Se crean if para saber si el puesto es de cada departamento
@@ -329,7 +335,6 @@ public class nuevoController implements Initializable {
                 iMaestroP.setAbsolutePosition(80f, 300f);
                 documento.add(iMaestro);
                 documento.add(iMaestroP);
-
                 documento.add(matricula);
             } else if (idP.getPuesto().equals("Administrativo")) {
                 documento.open();
@@ -354,15 +359,23 @@ public class nuevoController implements Initializable {
                 documento.add(iGasF);
                 documento.add(iGasP);
                 documento.add(matricula);
-                //documento.add(marca);
-                //documento.add(modelo);
-            } 
+
+            }
+
+
+
 
             try {
                 Connection c = Enlace.getConexion();
                 Statement stm = c.createStatement();
-                String sql = "SELECT matricula, marca, modelo FROM registros WHERE id =" + idSolicitantes;
+                String sql = "SELECT fecha_vencimiento FROM gafetes WHERE id =" + idSolicitantes;
                 ResultSet r = stm.executeQuery(sql);
+                if(r.next()){
+                    do{
+                        tabla.addCell(r.getString(1));
+                    }while (r.next());
+                    documento.add(tabla);
+                }
 
             }catch (SQLException e){
                 //e.printStackTrace();
